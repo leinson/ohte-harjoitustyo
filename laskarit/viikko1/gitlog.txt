@@ -1,4 +1,6 @@
 leinson@lx1-fuxi161:~/ohte/ot_viikko1/tiedostoja$ git log --stat | cat
+
+
 commit 4b281c786dd171b78c8bcb00b811deebbc5856ca
 Author: leinson <hannah.leinson@gmail.com>
 Date:   Thu Mar 17 11:28:16 2022 +0200
