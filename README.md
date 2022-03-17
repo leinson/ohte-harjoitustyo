@@ -1,6 +1,9 @@
 # Ohjelmistotekniikan harjoitustyö
 
-Tässä repositiossa on **ohte-kurssin harjoitustyö** jota teen 2022 keväällä ensimmäisenä opiskeluvuotena *Helsingin yliopistolla*.
-Olen tähän mennessä oppinut käyttämään 'Gittiä' sekä 'GitHubia' perusteiden tasolla.
+## Tehtävät
 
-Toivottavasti opin tällä kurssilla ***paljon*** liittyen ohjelmistotekniikkaan.
+### Viikko 1
+
+[gitlog.txt](https://github.com/leinson/ohte-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+
+[komentorivi.txt](https://github.com/leinson/ohte-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
