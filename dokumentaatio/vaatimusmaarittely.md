@@ -1,11 +1,11 @@
-#Vaatimusmäärittely
+# Vaatimusmäärittely
 
-##Sovelluksen tarkoitus
+## Sovelluksen tarkoitus
 
 Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pitää siitä huolta. Käyttäjä pääsee kokemaan minkälaista vastuuta lemmikin omistaminen vaati. Jos käyttäjä ei vastaa kissan tarpeisiin, kissasta tulee tyytymätön omistajaansa ja karkaa.
 
 
-##Perusversion tarjoama toiminnallisuus
+## Perusversion tarjoama toiminnallisuus
 
 - Käyttäjän nimi luodaan
 - Käyttäjä valitsee kissalle nimen
@@ -21,7 +21,7 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 - Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa.
 
 
-##Jatkokehitysideoita
+## Jatkokehitysideoita
 
 Kun tekstikäyttöliittymä on saatu toimimaan päivitetään se graafiseksi käyttöliittymäksi, joka voi sisältää esimerkiksi seuraavia elementtejä riippuen miten aikaa riittää:
 
@@ -44,7 +44,7 @@ Jos aikaa riittää täydennetään ohjelmaa esim. seuraavin toiminnallisuuksin:
 - Tiedon tallennus tiedostoon tai tietokantaan, jolloin käyttäjän nimellä voi seuraavan kerran avata saman kissan
 - Käyttäjä saa valita kissan värin
 
-##Käyttöliittymäluonnos
+## Käyttöliittymäluonnos
 
 Kolme näkymää: aloitusnäkymä, info-näkymä ja itse kissa-näkymä. Siirtymiset näkymien välillä nuolten mukaisesti.
 
