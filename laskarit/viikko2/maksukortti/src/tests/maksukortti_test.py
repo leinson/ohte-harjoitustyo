@@ -16,11 +16,16 @@ class TestMaksukortti(unittest.TestCase):
         self.kortti.syo_maukkaasti()
         self.assertEqual(str(self.kortti), "Kortilla on rahaa 6 euroa")
 
-
     def test_syo_edullisesti_ei_vie_saldoa_negatiiviseksi(self):
         self.kortti.syo_maukkaasti()
         self.kortti.syo_maukkaasti()
         self.kortti.syo_edullisesti()
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 2 euroa")
+
+    def test_syo_maukkaasti_ei_vie_saldoa_negatiiviseksi(self):
+        self.kortti.syo_maukkaasti()
+        self.kortti.syo_maukkaasti()
+        self.kortti.syo_maukkaasti()
         self.assertEqual(str(self.kortti), "Kortilla on rahaa 2 euroa")
 
     def test_kortille_voi_ladata_rahaa(self):
@@ -30,12 +35,6 @@ class TestMaksukortti(unittest.TestCase):
     def test_kortin_saldo_ei_ylita_maksimiarvoa(self):
         self.kortti.lataa_rahaa(200)
         self.assertEqual(str(self.kortti), "Kortilla on rahaa 150 euroa")
-
-    def test_syo_maukkaasti_ei_vie_saldoa_negatiiviseksi(self):
-        self.kortti.syo_maukkaasti()
-        self.kortti.syo_maukkaasti()
-        self.kortti.syo_maukkaasti()
-        self.assertEqual(str(self.kortti), "Kortilla on rahaa 2 euroa")
 
     def test_negatiivisen_summan_lataaminen_ei_muuta_saldoa(self):
         self.kortti.lataa_rahaa(-10)
@@ -54,3 +53,15 @@ class TestMaksukortti(unittest.TestCase):
         self.kortti.lataa_rahaa(2)
         self.kortti.syo_maukkaasti()
         self.assertEqual(str(self.kortti), "Kortilla on rahaa 0 euroa")
+
+    def test_rahan_ottaminen_saldo_vähenee_oikein(self):
+        self.kortti.syo_maukkaasti()
+        if self.assertEqual(str(self.kortti), "Kortilla on rahaa 6 euroa"):
+            return True
+    def test_rahan_ottaminen_saldo_ei_muutu_jos_ei_ole_tarpeeksi_rahaa(self):
+        self.kortti.syo_maukkaasti()
+        self.kortti.syo_maukkaasti()
+        self.kortti.syo_maukkaasti()
+        self.assertEqual(str(self.kortti), "Kortilla on rahaa 2 euroa")
+        if self.kortti.arvo < 4:
+            return False    
