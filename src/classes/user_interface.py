@@ -10,7 +10,7 @@ class UserInterface:
         print("1: Syötä oma nimesi.")
         print("2: Nimeä kissasi.")
         print("3: Syötä kissaa.")
-        #print("4: Leiki kissan kanssa.")
+        print("4: Leiki kissan kanssa.")
         print("0: Poistu sovelluksesta.")
 
     def add_owner(self):
@@ -33,6 +33,13 @@ class UserInterface:
             return
         self.owner.feed_cat(self.owner.owners_cat)
         print(f"Nam, nälkäni on nyt {self.owner.owners_cat.food_percent}/100.")
+    
+    def playing(self):
+        if self.owner.owners_cat==None:
+            print("Anna ensin kissallesi nimi.")
+            return
+        self.owner.play_cat(self.owner.owners_cat)
+        print(f"Olipa hauskaa leikkiä! Tyytyväisyyteni on nyt {self.owner.owners_cat.play_percent}/100.")
 
     def execute(self):
         self.instructions()
@@ -47,6 +54,8 @@ class UserInterface:
                 self.add_cat()
             if create_input=="3":
                 self.feeding()
+            if create_input=="4":
+                self.playing()
 
 
 
