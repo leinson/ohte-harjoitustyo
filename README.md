@@ -1,19 +1,26 @@
-# Ohjelmistotekniikan harjoitustyö
 
-## Vaatimusmäärittely
-[vaatimusmaarittely.md](https://github.com/leinson/ohte-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
+# MiukuM@uku - Ohjelmistotekniikan harjoitustyö
+Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pitää siitä huolta. Käyttäjä pääsee kokemaan minkälaista vastuuta lemmikin omistaminen vaati. Jos käyttäjä ei vastaa kissan tarpeisiin, kissasta tulee tyytymätön omistajaansa ja karkaa.
 
-## Työaikakirjanpito
-[tuntikirjanpito.md](https://github.com/leinson/ohte-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
+Sovellus on toteutettu Helsingin yliopiston kurssilla Ohjelmistotekniikka. 
+## Python versio
+Sovellusta on testattu Pythonin `3.8` versiolla.
 
-## Tehtävät
+## Dokumentaatio
+- [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
 
-### Viikko 1
+- [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
 
-Linkit tiedostoihin alla:
+- [Changelog](./dokumentaatio/changelog.md)
 
 
-[gitlog.txt](https://github.com/leinson/ohte-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+## Testaus
+### Asennus
+- Riippuvuudet asennetaan komennolla: `poetry install`
+- Alustustoimenpiteet komennolla: `poetry run invoke build`
+- Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
 
-[komentorivi.txt](https://github.com/leinson/ohte-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
-
+### Komentorivitoiminnot
+- Ohjelma suoritetaan komennolla: `poetry run invoke start`
+- Testit tehdään komennolla: `poetry run invoke test`
+- Testikattavuuden saa komennolla: `poetry run invoke coverage-report`
