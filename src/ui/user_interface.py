@@ -1,11 +1,12 @@
 from classes.owner_and_cat import Owner
 
+
 class UserInterface:
     def __init__(self):
-        self.owner= Owner()
+        self.owner = Owner()
 
     def instructions(self):
-        print("Tämä on MiukuM@uku, virtuaalinen kissalemmikkisovellus.") 
+        print("Tämä on MiukuM@uku, virtuaalinen kissalemmikkisovellus.")
         print("Komennot:")
         print("1: Syötä oma nimesi.")
         print("2: Nimeä kissasi.")
@@ -14,55 +15,55 @@ class UserInterface:
         print("0: Poistu sovelluksesta.")
 
     def add_owner(self):
-        given_name= input("Nimi: ")
+        given_name = input("Nimi: ")
         self.owner.add_owner_name(given_name)
         print(self.owner)
 
     def add_cat(self):
-        if self.owner.name=="":
+        if self.owner.name == "":
             print("Syötä ensin oma nimesi komennolla 1.")
             return
-        given_name= input("Kissan nimi: ")
+        given_name = input("Kissan nimi: ")
         self.owner.add_cat_and_name(given_name)
         print("Kissan nimi on nyt", self.owner.owners_cat)
         print(self.owner)
 
     def feeding(self):
-        if self.owner.owners_cat==None:
+        if self.owner.owners_cat == None:
             print("Anna ensin kissallesi nimi.")
             return
         self.owner.feed_cat(self.owner.owners_cat)
         print(f"Nam, nälkäni on nyt {self.owner.owners_cat.food_percent}/100.")
-    
+
     def playing(self):
-        if self.owner.owners_cat==None:
+        if self.owner.owners_cat == None:
             print("Anna ensin kissallesi nimi.")
             return
         self.owner.play_cat(self.owner.owners_cat)
-        print(f"Olipa hauskaa leikkiä! Tyytyväisyyteni on nyt {self.owner.owners_cat.play_percent}/100.")
+        print(
+            f"Olipa hauskaa leikkiä! Tyytyväisyyteni on nyt {self.owner.owners_cat.play_percent}/100.")
 
     def execute(self):
         self.instructions()
         while True:
-            create_input= input("komento: ")
-            if create_input== "0":
+            create_input = input("komento: ")
+            if create_input == "0":
                 print("Kiitos ja hei!")
                 break
-            if create_input=="1":
+            if create_input == "1":
                 self.add_owner()
-            if create_input=="2":
+            if create_input == "2":
                 self.add_cat()
-            if create_input=="3":
+            if create_input == "3":
                 self.feeding()
-            if create_input=="4":
+            if create_input == "4":
                 self.playing()
 
 
-
 if False:
-    user= Owner()
+    user = Owner()
     user.add_owner_name("Hannah")
-    user.add_cat_and_name("Miuku")    
+    user.add_cat_and_name("Miuku")
     print(user)
     print(user.owners_cat)
     print(user.owners_cat.food_percent)
