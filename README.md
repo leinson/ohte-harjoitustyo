@@ -17,7 +17,6 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 ## Testaus
 ### Asennus
 - Riippuvuudet asennetaan komennolla: `poetry install`
-- Alustustoimenpiteet komennolla: `poetry run invoke build`
 - Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
 
 ### Komentorivitoiminnot
