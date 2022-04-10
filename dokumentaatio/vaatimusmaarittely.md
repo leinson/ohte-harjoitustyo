@@ -7,17 +7,17 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Käyttäjän nimi luodaan
-- Käyttäjä valitsee kissalle nimen
+- Käyttäjän nimi luodaan /tehty
+- Käyttäjä valitsee kissalle nimen /tehty
 
-- Käyttäjä näkee:
+- Käyttäjä näkee: /"tehty", tekstikäyttöliittymässä saa tiedon että käyttäjälle on luotu kissa,ruokkiessa+leikittäessä näkee nälän ja leikin tarpeet
 	- kissan
 	- miten nälkäinen kissa on
 	- jos kissa tarvitsee leikittämistä
 - Käyttäjä voi:
-	- ruokkia kissaa
-	- leikittää kissaa
-	- poistua sovelluksesta
+	- ruokkia kissaa /tehty
+	- leikittää kissaa /tehty
+	- poistua sovelluksesta /tehty
 - Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa.
 
 
@@ -25,9 +25,9 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 
 Kun tekstikäyttöliittymä on saatu toimimaan päivitetään se graafiseksi käyttöliittymäksi, joka voi sisältää esimerkiksi seuraavia elementtejä riippuen miten aikaa riittää:
 
-- Alkusivu, missä on kentät oman nimen ja kissan nimen täyttämiselle, sekä painike mistä pääsee siirtymään kissa-näkymään.
--Ohjeet-painike, missä pääsee lukemaan ohjeet sovelluksen käyttöä varten.
-Kissa-näkymä:
+- Alkusivu, missä on kentät oman nimen ja kissan nimen täyttämiselle, sekä painike mistä pääsee siirtymään kissa-näkymään. /tehty
+-Ohjeet-painike, missä pääsee lukemaan ohjeet sovelluksen käyttöä varten. /tehty(teksti tekemättä)
+Kissa-näkymä: /tehty(tyhjä sivu)
 - Kissa:
 	- Kissan ilme muuttuu sen mukaan, miten täynnä tarpeet-palkit ovat.
 	- Kissan keho kapeutuu kun nälkä-palkki on lähes tyhjä
@@ -36,7 +36,7 @@ Kissa-näkymä:
 	
 - Palkit tai prosentit, missä näkyy ruoka- ja leikki-tarpeet (esim. nälkä: 50/100).
 - Taustakuva
-- Poistu-painike
+- Poistu-painike /tehty
 
 
 Jos aikaa riittää täydennetään ohjelmaa esim. seuraavin toiminnallisuuksin:
