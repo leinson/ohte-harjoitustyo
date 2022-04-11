@@ -14,5 +14,6 @@
 	- Cat näkymä: Karkeasti tarvittavat elementit hahmoteltu
 	- Info näkymä (tyhjä)
 	- Graafista käyttöliittymää ei vielä yhdistetty muun sovelluksen koodiin vaan toimii erillään.
-- Laajennettu testikattavuutta
+- Laajennettu testikattavuutta.
 - Ohjelmaan lisätty pylint työkalu.
+- Luokkakaavio tehty arkkitehtuuritiedostoon.
