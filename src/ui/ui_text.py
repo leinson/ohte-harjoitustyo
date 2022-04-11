@@ -47,8 +47,11 @@ class UserInterface:
             f"Olipa hauskaa leikkiä! Tyytyväisyyteni on nyt {self.owner.owners_cat.play_percent}/100.")
 
     def show_stats(self):
-        print(
-            f"Leikkimisen tarve on {self.owner.owners_cat.play_percent}/100, ruoan tarve on {self.owner.owners_cat.food_percent}/100.")
+        if self.check_owner_cat_not_none():
+            print(
+                f"Leikkimisen tarve on {self.owner.owners_cat.play_percent}/100, ruoan tarve on {self.owner.owners_cat.food_percent}/100.")
+        else:
+            print("Anna ensin kissallesi nimi.")
 
     def start_percent_decrease(self):
         self.owner.owners_cat.stats_thread()
@@ -61,7 +64,7 @@ class UserInterface:
         self.instructions()
         while True:
             if self.check_owner_cat_not_none():
-                if self.owner.owners_cat.food_percent <= 0 and self.owner.owners_cat.play_percent <= 0:
+                if self.owner.owners_cat.food_percent <= 0 or self.owner.owners_cat.play_percent <= 0:
                     break
 
             create_input = input("komento: ")

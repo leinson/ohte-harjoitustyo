@@ -29,8 +29,8 @@ class Owner:
 
 class PetCat:
     def __init__(self, name):
-        self.food_percent = 50  # randint(20,100)
-        self.play_percent = 50
+        self.food_percent = 20  # randint(20,100)
+        self.play_percent = 20
         self.name = name
 
     def stats_percent(self, action, percent):
@@ -40,7 +40,7 @@ class PetCat:
             self.play_percent += percent
 
     def stats_decrease(self):
-        while self.food_percent > 0 and self.play_percent > 0:
+        while self.food_percent >= 0 or self.play_percent >= 0:
             self.food_percent -= 5
             self.play_percent -= 5
             time.sleep(5)
