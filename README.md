@@ -13,6 +13,7 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 
 - [Changelog](./dokumentaatio/changelog.md)
 
+- [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
 
 ## Testaus
 ### Asennus
