@@ -9,4 +9,5 @@
 | 7.4. | 5 | pylint alustus, tkinter:iin perehtyminen, siirtymät näkymien välille, aloitusnäkymän elementit luotu |
 | 10.4. | 1 | Labtooliin ehdotetut muutokset tehty, aloitettu 4vko changelog merkintä, lisätty tehty merkinnät vaatimusmäärittelyyn, tilannekatsaus |
 | 11.4. | 5,5 | Kissanäkymän elementit luotu, haettu tietoa miten sovelluksen toiminnot yhdistetään tkinteriin. Tarve-prosenttien countdown toiminto luotu. Luokkakaavio tehty. Viikko 4 tehtävät tehty loppuun. |
+
 Tuntien yhteissumma: 20,5h
