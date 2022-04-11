@@ -1,5 +1,6 @@
 from tkinter import Tk, ttk, constants
 
+
 class InfoView:
     def __init__(self, root, handle_start):
         self._root = root
@@ -13,7 +14,7 @@ class InfoView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
         label = ttk.Label(master=self._frame, text="Info")

@@ -1,5 +1,6 @@
 from tkinter import Tk, ttk, constants
 
+
 class CatView:
     def __init__(self, root, handle_start):
         self._root = root
@@ -13,16 +14,18 @@ class CatView:
 
     def destroy(self):
         self._frame.destroy()
-    
+
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        name_label = ttk.Label(master=self._frame, text="Käyttäjän __ kissa __")
+        name_label = ttk.Label(
+            master=self._frame, text="Käyttäjän __ kissa __")
         food_label = ttk.Label(master=self._frame, text="Ruoka-tarve")
-        food_stat_label =  ttk.Label(master=self._frame, text="x/100")
+        food_stat_label = ttk.Label(master=self._frame, text="x/100")
         play_label = ttk.Label(master=self._frame, text="Leikki-tarve")
-        play_stat_label =  ttk.Label(master=self._frame, text="x/100")
-        cat_label = ttk.Label(master=self._frame, text="Kuva \nkissasta \ntähän")
-        
+        play_stat_label = ttk.Label(master=self._frame, text="x/100")
+        cat_label = ttk.Label(master=self._frame,
+                              text="Kuva \nkissasta \ntähän")
+
         food_button = ttk.Button(
             master=self._frame,
             text="Ruoki minua!"

@@ -1,4 +1,5 @@
 from classes.owner_and_cat import Owner
+from classes.owner_and_cat import PetCat
 
 
 class UserInterface:
@@ -12,6 +13,7 @@ class UserInterface:
         print("2: Nimeä kissasi.")
         print("3: Syötä kissaa.")
         print("4: Leiki kissan kanssa.")
+        print("5: Näytä kissan tarpeet.")
         print("0: Poistu sovelluksesta.")
 
     def add_owner(self):
@@ -27,6 +29,7 @@ class UserInterface:
         self.owner.add_cat_and_name(given_name)
         print("Kissan nimi on nyt", self.owner.owners_cat)
         print(self.owner)
+        self.start_percent_decrease()
 
     def feeding(self):
         if self.owner.owners_cat == None:
@@ -43,12 +46,27 @@ class UserInterface:
         print(
             f"Olipa hauskaa leikkiä! Tyytyväisyyteni on nyt {self.owner.owners_cat.play_percent}/100.")
 
+    def show_stats(self):
+        print(
+            f"Leikkimisen tarve on {self.owner.owners_cat.play_percent}/100, ruoan tarve on {self.owner.owners_cat.food_percent}/100.")
+
+    def start_percent_decrease(self):
+        self.owner.owners_cat.stats_thread()
+
+    def check_owner_cat_not_none(self):
+        if self.owner.owners_cat != None and self.owner.name != "":
+            return True
+
     def execute(self):
         self.instructions()
         while True:
+            if self.check_owner_cat_not_none():
+                if self.owner.owners_cat.food_percent <= 0 and self.owner.owners_cat.play_percent <= 0:
+                    break
+
             create_input = input("komento: ")
             if create_input == "0":
-                print("Kiitos ja hei!")
+                print("Olipa kivaa, kiitos ja mau!")
                 break
             if create_input == "1":
                 self.add_owner()
@@ -58,6 +76,8 @@ class UserInterface:
                 self.feeding()
             if create_input == "4":
                 self.playing()
+            if create_input == "5":
+                self.show_stats()
 
 
 if False:

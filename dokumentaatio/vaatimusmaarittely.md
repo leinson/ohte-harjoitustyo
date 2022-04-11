@@ -15,13 +15,13 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 	- miten nälkäinen kissa on
 	- jos kissa tarvitsee leikittämistä
 
-/"tehty", tekstikäyttöliittymässä saa tiedon että käyttäjälle on luotu kissa,ruokkiessa+leikittäessä näkee nälän ja leikin tarpeet
+/tehty tekstikäyttöliittymässä: saa tiedon että käyttäjälle on luotu kissa, komennolla 5 näkee nälän ja leikin tarpeet sekä ruokkiessa+leikittäessä
 
 - Käyttäjä voi:
 	- ruokkia kissaa /tehty
 	- leikittää kissaa /tehty
 	- poistua sovelluksesta /tehty
-- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa.
+- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa. /tehty
 
 
 ## Jatkokehitysideoita

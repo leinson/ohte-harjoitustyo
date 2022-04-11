@@ -4,6 +4,7 @@ from cat_view import CatView
 from start_view import StartView
 from info_view import InfoView
 
+
 class UI:
     def __init__(self, root):
         self._root = root
@@ -29,11 +30,11 @@ class UI:
     def _handle_start(self):
         # move to start view, maybe save cat stats?
         self._show_start_view()
-    
+
     def _handle_info(self):
         # move to info view
         self._show_info_view()
-    
+
     def _show_start_view(self):
         self._hide_current_view()
 

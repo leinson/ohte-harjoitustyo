@@ -1,4 +1,8 @@
 #from random import randint
+import time
+import threading
+
+
 class Owner:
     def __init__(self):
         self.name = ""
@@ -25,8 +29,8 @@ class Owner:
 
 class PetCat:
     def __init__(self, name):
-        self.food_percent = 0  # randint(20,100)
-        self.play_percent = 0
+        self.food_percent = 50  # randint(20,100)
+        self.play_percent = 50
         self.name = name
 
     def stats_percent(self, action, percent):
@@ -34,6 +38,20 @@ class PetCat:
             self.food_percent += percent
         if action == "play":
             self.play_percent += percent
+
+    def stats_decrease(self):
+        while self.food_percent > 0 and self.play_percent > 0:
+            self.food_percent -= 5
+            self.play_percent -= 5
+            time.sleep(5)
+        self.run_away()
+
+    def stats_thread(self):
+        countdown_thread = threading.Thread(target=self.stats_decrease)
+        countdown_thread.start()
+
+    def run_away(self):
+        return print("Et pitänyt minusta tarpeeksi hyvää huolta. :( Karkaan naapuriin, hyvästi!")
 
     def __str__(self):
         return f"{self.name}"
