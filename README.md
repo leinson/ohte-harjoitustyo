@@ -21,5 +21,7 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 
 ### Komentorivitoiminnot
 - Ohjelma suoritetaan komennolla: `poetry run invoke start`
+- Ohjelman graafinen ui komennolla: `poetry run invoke gui` (gui+ohjelma ei vielä integroitu keskenään)
 - Testit tehdään komennolla: `poetry run invoke test`
 - Testikattavuuden saa komennolla: `poetry run invoke coverage-report`
+- Pylint tarkistus komennolla: `poetry run invoke lint`

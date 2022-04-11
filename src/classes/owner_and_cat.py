@@ -29,10 +29,10 @@ class PetCat:
         self.play_percent = 0
         self.name = name
 
-    def stats_percent(self, need, percent):
-        if need == "food":
+    def stats_percent(self, action, percent):
+        if action == "food":
             self.food_percent += percent
-        if need == "play":
+        if action == "play":
             self.play_percent += percent
 
     def __str__(self):

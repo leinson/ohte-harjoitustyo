@@ -1,10 +1,14 @@
 from invoke import task
 
-# poetry run invoke {task}
+# komento: poetry run invoke {task}
 
 @task
 def start(ctx):
     ctx.run("python3 src/index.py", pty=True)
+
+@task
+def gui(ctx):
+    ctx.run("python3 src/ui/ui_tkinter.py", pty=True)
 
 @task
 def coverage(ctx):
