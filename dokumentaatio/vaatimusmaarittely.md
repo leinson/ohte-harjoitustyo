@@ -7,21 +7,21 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Käyttäjän nimi luodaan /tehty
-- Käyttäjä valitsee kissalle nimen /tehty
+- Käyttäjän nimi luodaan /tehty gui
+- Käyttäjä valitsee kissalle nimen /tehty gui
 
 - Käyttäjä näkee: 
 	- kissan
-	- miten nälkäinen kissa on
-	- jos kissa tarvitsee leikittämistä
+	- miten nälkäinen kissa on /tehty gui
+	- jos kissa tarvitsee leikittämistä /tehty gui
 
 /tehty tekstikäyttöliittymässä: saa tiedon että käyttäjälle on luotu kissa, komennolla 5 näkee nälän ja leikin tarpeet sekä ruokkiessa+leikittäessä
 
 - Käyttäjä voi:
-	- ruokkia kissaa /tehty
-	- leikittää kissaa /tehty
-	- poistua sovelluksesta /tehty
-- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa. /tehty
+	- ruokkia kissaa /tehty gui
+	- leikittää kissaa /tehty gui
+	- poistua sovelluksesta /tehty gui
+- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa. /tehty teksti-ui
 
 
 ## Jatkokehitysideoita
@@ -32,7 +32,7 @@ Kun tekstikäyttöliittymä on saatu toimimaan päivitetään se graafiseksi kä
 
 - Ohjeet-painike, missä pääsee lukemaan ohjeet sovelluksen käyttöä varten. /tehty(teksti tekemättä)
 
-Kissa-näkymä: /tehty(tyhjä sivu)
+Kissa-näkymä: /tehty paitsi itse kissa
 
 - Kissa:
 	- Kissan ilme muuttuu sen mukaan, miten täynnä tarpeet-palkit ovat.
@@ -40,7 +40,7 @@ Kissa-näkymä: /tehty(tyhjä sivu)
 	- Kissan keho suurentuu kun nälkä-palkki on täynnä ja syöttäminen jatkuu
 	- Kissa sanoo asioita, esimerkiksi varoittaa ennen kun palkit ovat tyhjät, ja ilmaisee onnellisuutta kun ovat täynnä.
 	
-- Palkit tai prosentit, missä näkyy ruoka- ja leikki-tarpeet (esim. nälkä: 50/100).
+- Palkit tai prosentit, missä näkyy ruoka- ja leikki-tarpeet (esim. nälkä: 50/100)./tehty
 - Taustakuva
 - Poistu-painike /tehty
 
