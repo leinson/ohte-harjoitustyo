@@ -3,6 +3,7 @@ import time
 import threading
 
 
+
 class Owner:
     def __init__(self):
         self.name = ""
@@ -24,7 +25,9 @@ class Owner:
     def __str__(self):
         if self.owners_cat is None:
             return f"Käyttäjän nimi on {self.name}."
-        return f"Käyttäjän nimi on {self.name}. Käyttäjän kissa on {self.owners_cat}."
+        return f"Käyttäjän {self.name} kissa {self.owners_cat}."
+
+owner=Owner()
 
 
 class PetCat:
@@ -40,7 +43,7 @@ class PetCat:
             self.play_percent += percent
 
     def stats_decrease(self):
-        while self.food_percent >= 0 or self.play_percent >= 0:
+        while self.food_percent > 0 or self.play_percent > 0:
             self.food_percent -= 5
             self.play_percent -= 5
             time.sleep(5)

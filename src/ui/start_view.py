@@ -1,5 +1,5 @@
-from tkinter import ttk, constants
-
+from tkinter import StringVar, ttk, constants
+from classes.owner_and_cat import Owner, owner
 
 class StartView:
     def __init__(self, root, handle_cat, handle_info, exit_appl):
@@ -10,6 +10,7 @@ class StartView:
         self._frame = None
         self._entry_user = None
         self._entry_cat = None
+        self.owner = None
 
         self._initialize()
 
@@ -18,23 +19,50 @@ class StartView:
 
     def destroy(self):
         self._frame.destroy()
+    
+    def _handle_start_button_click(self):
+            self.owner = owner          
+            entry_value_user = self._entry_user.get()
+            entry_value_cat = self._entry_cat.get()
+            self.owner.add_owner_name(entry_value_user)
+            self.owner.add_cat_and_name(entry_value_cat)
+            print(self.owner)
+            print(self.owner.owners_cat)
+            #print(f"Testi: {entry_value_user}, {entry_value_cat}")
+
+            self._handle_cat()
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(
-            master=self._frame, text="Tämä on MiukuM@uku, virtuaalinen kissalemmikkisovellus.\nSyötä tiedot alle:")
-        user_label = ttk.Label(master=self._frame, text="Käyttäjätunnus:")
-        self._entry_user = ttk.Entry(master=self._frame)
+            master=self._frame, 
+            text="Tämä on MiukuM@uku, virtuaalinen kissalemmikkisovellus.\nLuethan ohjeet, ennen kuin aloitat.\nSyötä tiedot alle:"
+            )
+        user_label = ttk.Label(
+            master=self._frame, 
+            text="Käyttäjätunnus:"
+            )
+        self._entry_user = ttk.Entry(
+            master=self._frame, 
+            textvariable=StringVar()
+            )
 
-        cat_label = ttk.Label(master=self._frame, text="Kissan nimi:")
-        self._entry_cat = ttk.Entry(master=self._frame)
+        cat_label = ttk.Label(
+            master=self._frame, 
+            text="Kissan nimi:"
+            )
+        self._entry_cat = ttk.Entry(
+            master=self._frame, 
+            textvariable=StringVar()
+            )
 
         start_button = ttk.Button(
             master=self._frame,
             text="Aloita",
-            command=self._handle_cat
-        )  # käytä lambdaa jos haluat parametreja mukaan commandiin
+            command= self._handle_start_button_click
+            )
+
         info_button = ttk.Button(
             master=self._frame,
             text="Ohjeet",
@@ -63,16 +91,3 @@ class StartView:
         exit_button.grid(row=4, column=0, sticky=constants.W, padx=5, pady=5)
 
         self._root.grid_columnconfigure(1, weight=1, minsize=400)
-
-    #     start click tiedon tallennus??
-    #     entry_value_user = entry_user.get()
-    #     entry_value_cat = entry_cat.get()
-    #     print(f"Testi: {entry_value_user}, {entry_value_cat}")
-
-    # Nämä varmaan ui luokkaan, niinkuin handle_cat
-
-    def _handle_info_button_click(self):
-        pass  # move to info view
-
-    def _handle_exit_button_click(self):
-        pass  # exit program

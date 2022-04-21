@@ -1,9 +1,9 @@
 #from tkinter import ttk, constants, Tk
 from tkinter import *
-from cat_view import CatView
-from start_view import StartView
-from info_view import InfoView
-
+from ui.cat_view import CatView
+from ui.start_view import StartView
+from ui.info_view import InfoView
+from classes.owner_and_cat import Owner
 
 class UI:
     def __init__(self, root):
@@ -68,10 +68,3 @@ class UI:
         self._current_view.pack()
 
 
-window = Tk()
-window.title("MiukuM@uku")
-
-ui = UI(window)
-ui.start()
-
-window.mainloop()

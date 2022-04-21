@@ -8,7 +8,7 @@ def start(ctx):
 
 @task
 def gui(ctx):
-    ctx.run("python3 src/ui/ui_tkinter.py", pty=True)
+    ctx.run("python3 src/index_gui.py", pty=True)
 
 @task
 def coverage(ctx):
