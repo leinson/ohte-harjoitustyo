@@ -1,3 +1,6 @@
+
+### Luokkakaavio
+
 ```mermaid
  classDiagram
       Owner "1" -- "1" PetCat
@@ -23,3 +26,21 @@
       class UI{
       }
 ```
+Luokka PetCat sisältää metodeja liittyen kissan toimintaan, Owner luokka taas käyttäjään liittyvää toimintaa sekä toimintoja, mitä käyttäjä voi tehdä kissalle. PetCat luokkaa käsitellään vain Owner luokan kautta. 
+
+### Pakkauskaavio
+
+```mermaid
+ classDiagram
+      ui  ..>  classes
+      
+      
+      class ui{
+      }
+      class classes{
+      }
+```
+
+Kansio ui sisältää käyttöliittymään liittyviä tiedostoja, ja kansio classes sisältää sovelluslogiikkaan liittyviä tiedostoja.
+
+
