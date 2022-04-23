@@ -1,5 +1,5 @@
 from tkinter import StringVar, ttk, constants
-from classes.owner_and_cat import Owner, owner
+from entities_and_services.owner_and_cat import Owner, owner
 
 class StartView:
     def __init__(self, root, handle_cat, handle_info, exit_appl):

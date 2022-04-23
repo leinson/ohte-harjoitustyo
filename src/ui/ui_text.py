@@ -1,5 +1,5 @@
-from classes.owner_and_cat import Owner
-from classes.owner_and_cat import PetCat
+from entities_and_services.owner_and_cat import Owner
+from entities_and_services.owner_and_cat import PetCat
 
 
 class UserInterface:

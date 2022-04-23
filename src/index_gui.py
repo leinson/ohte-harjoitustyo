@@ -1,5 +1,6 @@
-from ui.ui_tkinter import UI
 from tkinter import Tk
+from ui.ui_tkinter import UI
+
 
 
 def main():
@@ -15,3 +16,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    

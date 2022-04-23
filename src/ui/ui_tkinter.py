@@ -3,7 +3,7 @@ from tkinter import *
 from ui.cat_view import CatView
 from ui.start_view import StartView
 from ui.info_view import InfoView
-from classes.owner_and_cat import Owner
+from entities_and_services.owner_and_cat import Owner
 
 class UI:
     def __init__(self, root):

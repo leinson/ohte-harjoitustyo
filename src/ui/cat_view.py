@@ -1,5 +1,5 @@
 from tkinter import Tk, ttk, constants
-from classes.owner_and_cat import Owner, owner
+from entities_and_services.owner_and_cat import Owner, owner
 from ui.start_view import StartView
 class CatView:
     def __init__(self, root, handle_start):
