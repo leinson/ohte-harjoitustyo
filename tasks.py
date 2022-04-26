@@ -3,11 +3,11 @@ from invoke import task
 # komento: poetry run invoke {task}
 
 @task
-def start(ctx):
+def start_textui(ctx):
     ctx.run("python3 src/index.py", pty=True)
 
 @task
-def gui(ctx):
+def start(ctx):
     ctx.run("python3 src/index_gui.py", pty=True)
 
 @task
