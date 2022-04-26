@@ -18,11 +18,12 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 ## Testaus
 ### Asennus
 - Riippuvuudet asennetaan komennolla: `poetry install`
+- Alustustoimenpiteet komennolla: `poetry run invoke build`
 - Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
 
 ### Komentorivitoiminnot
 - Ohjelma suoritetaan komennolla: `poetry run invoke start`
-- Ohjelman graafinen ui komennolla: `poetry run invoke gui` (gui+ohjelma ei vielä integroitu keskenään)
+- Ohjelman teksti-ui komennolla: `poetry run invoke start-textui`
 - Testit tehdään komennolla: `poetry run invoke test`
 - Testikattavuuden saa komennolla: `poetry run invoke coverage-report`
 - Pylint tarkistus komennolla: `poetry run invoke lint`
