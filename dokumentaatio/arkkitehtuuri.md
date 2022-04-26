@@ -32,15 +32,18 @@ Luokka PetCat sisältää metodeja liittyen kissan toimintaan, Owner luokka taas
 
 ```mermaid
  classDiagram
-      ui  ..>  classes
+      ui  ..>  entities_and_services
       
       
       class ui{
       }
-      class classes{
+      class entities_and_services{
       }
 ```
 
-Kansio ui sisältää käyttöliittymään liittyviä tiedostoja, ja kansio classes sisältää sovelluslogiikkaan liittyviä tiedostoja.
+Kansio ui sisältää käyttöliittymään liittyviä tiedostoja, ja kansio entities_and_services sisältää sovelluslogiikkaan ja luokkiin liittyviä tiedostoja. 
+
+### Kommentti
+Jos aikaa riittää, eriytetään mahdollisesti PetCat ja Owner metodeja järkevämmin eri luokkiin entities ja services rakenteen mukaisesti.
 
 
