@@ -15,14 +15,14 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 
 - [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
 
-## Testaus
 ### Asennus
+
+- [GitHub Release](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko5)
 - Riippuvuudet asennetaan komennolla: `poetry install`
-- Alustustoimenpiteet komennolla: `poetry run invoke build`
 - Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
 
 ### Komentorivitoiminnot
-- Ohjelma suoritetaan komennolla: `poetry run invoke start`
+- Ohjelma (gui) suoritetaan komennolla: `poetry run invoke start`
 - Ohjelman teksti-ui komennolla: `poetry run invoke start-textui`
 - Testit tehdään komennolla: `poetry run invoke test`
 - Testikattavuuden saa komennolla: `poetry run invoke coverage-report`
