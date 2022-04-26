@@ -17,3 +17,14 @@
 - Laajennettu testikattavuutta.
 - Ohjelmaan lisätty pylint työkalu.
 - Luokkakaavio tehty arkkitehtuuritiedostoon.
+
+## Viikko 5
+- Sovelluslogiikkaa alettu yhdistämään graafiseen käyttöliittymään:
+	- Käyttäjän nimi ja kissan nimi saadaan käsin syötettyä ja ne siirtyvät Cat näkymään
+	- Cat näkymässä näkyy reaaliaikaiset kissan statukset 
+	- "Leiki kanssani" ja "Ruoki minua" napit korottavat oikeaa statusta ja oikealla tavalla 		reaaliaikaisesti.
+	- Statuksien countdown toiminto ei ole vielä yhdistetty graafiseen käyttöliittymään.
+- Piirretty kissa ja siitä eri versiot statuksien mukaan (iloinen, surullinen, laiha, kookas). Kuvia ei integroitu vielä ohjelmaan.
+- Laajennettu testikattavuutta ja siistitty koodia pylintin mukaan.
+- Pakkausrakennekaavio tehty arkkitehtuuritiedostoon.
+- Tehty GitHub release.
