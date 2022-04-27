@@ -35,6 +35,7 @@ class PetCat:
         self.food_percent = 20  # randint(20,100)
         self.play_percent = 20
         self.name = name
+        self.countdown = False
 
     def stats_percent(self, action, percent):
         if action == "food":
@@ -42,19 +43,23 @@ class PetCat:
         if action == "play":
             self.play_percent += percent
 
-    def stats_decrease(self):
-        while self.food_percent > 0 or self.play_percent > 0:
-            self.food_percent -= 5
-            self.play_percent -= 5
-            time.sleep(5)
-        self.run_away()
+    def stats_decrease(self): #ei lopu oikein koska uusi parametri ei välity samaan funktiokutsuun
+        while self.food_percent > 0 and self.play_percent > 0:
+            if self.countdown == True:
+                self.food_percent -= 5
+                self.play_percent -= 5
+                time.sleep(5)
+            else:
+                break
+        if self.countdown==True:
+            self.run_away()
 
     def stats_thread(self):
         countdown_thread = threading.Thread(target=self.stats_decrease)
         countdown_thread.start()
 
     def run_away(self):
-        return print("Et pitänyt minusta tarpeeksi hyvää huolta. :( Karkaan naapuriin, hyvästi!")
+        print("Et pitänyt minusta tarpeeksi hyvää huolta. :( Karkaan naapuriin, hyvästi!")
 
     def __str__(self):
         return f"{self.name}"

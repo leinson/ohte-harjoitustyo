@@ -3,7 +3,7 @@ from tkinter import *
 from ui.cat_view import CatView
 from ui.start_view import StartView
 from ui.info_view import InfoView
-from entities_and_services.owner_and_cat import Owner
+from entities_and_services.owner_and_cat import Owner, owner
 
 class UI:
     def __init__(self, root):
@@ -24,11 +24,11 @@ class UI:
         self._root.destroy()
 
     def _handle_cat(self):
-        # move to cat view + save values somewhere
+        # move to cat view
         self._show_cat_view()
 
     def _handle_start(self):
-        # move to start view, maybe save cat stats?
+        # move to start view
         self._show_start_view()
 
     def _handle_info(self):

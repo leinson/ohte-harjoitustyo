@@ -1,6 +1,6 @@
 from tkinter import StringVar, ttk, constants
 from entities_and_services.owner_and_cat import Owner, owner
-
+import emoji
 class StartView:
     def __init__(self, root, handle_cat, handle_info, exit_appl):
         self._root = root
@@ -26,10 +26,7 @@ class StartView:
             entry_value_cat = self._entry_cat.get()
             self.owner.add_owner_name(entry_value_user)
             self.owner.add_cat_and_name(entry_value_cat)
-            print(self.owner)
-            print(self.owner.owners_cat)
-            #print(f"Testi: {entry_value_user}, {entry_value_cat}")
-
+            self.owner.owners_cat.countdown=True
             self._handle_cat()
 
     def _initialize(self):
@@ -41,7 +38,7 @@ class StartView:
             )
         user_label = ttk.Label(
             master=self._frame, 
-            text="Käyttäjätunnus:"
+            text="Nimesi:"
             )
         self._entry_user = ttk.Entry(
             master=self._frame, 
@@ -59,7 +56,7 @@ class StartView:
 
         start_button = ttk.Button(
             master=self._frame,
-            text="Aloita",
+            text=f"Aloita! {emoji.emojize(':cat_face:')}",
             command= self._handle_start_button_click
             )
 
