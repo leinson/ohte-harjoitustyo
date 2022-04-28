@@ -11,17 +11,16 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 - Käyttäjä valitsee kissalle nimen /tehty gui
 
 - Käyttäjä näkee: 
-	- kissan
+	- kissan /kissa luotu, ei integroitu gui
 	- miten nälkäinen kissa on /tehty gui
 	- jos kissa tarvitsee leikittämistä /tehty gui
 
-/tehty tekstikäyttöliittymässä: saa tiedon että käyttäjälle on luotu kissa, komennolla 5 näkee nälän ja leikin tarpeet sekä ruokkiessa+leikittäessä
 
 - Käyttäjä voi:
 	- ruokkia kissaa /tehty gui
 	- leikittää kissaa /tehty gui
 	- poistua sovelluksesta /tehty gui
-- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa. /tehty teksti-ui
+- Jos käyttäjä ei syötä tai leiki kissan kanssa tietyn aikaikkunan sisällä, kissa karkaa. /tehty gui osittain
 
 
 ## Jatkokehitysideoita
