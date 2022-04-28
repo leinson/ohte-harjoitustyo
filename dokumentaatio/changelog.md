@@ -28,3 +28,7 @@
 - Laajennettu testikattavuutta ja siistitty koodia pylintin mukaan.
 - Pakkausrakennekaavio tehty arkkitehtuuritiedostoon.
 - Tehty GitHub release.
+
+## Viikko 6
+- Countdown integroitu graafiseen käyttöliittymään, eli ruoka ja leikkiprosentit vähenevät automaattisesti.
+- Ulkoinen `emoji` kirjasto lisätty ja käytetty sovelluksessa.
