@@ -2,71 +2,98 @@ from tkinter import Tk, ttk, constants
 from entities_and_services.owner_and_cat import Owner, owner
 from ui.start_view import StartView
 import emoji
+
+
 class CatView:
+    """Luokka, joka kuvastaa kissa-näkymää graafisessa käyttöliittymässä.
+    """
     def __init__(self, root, handle_start):
+        """Luokan konstruktori, joka luo näkymän.
+
+        Args:
+            root: GUI juuri.
+            handle_start: Polku start-näkymään.
+        """
         self._root = root
         self._handle_start = handle_start
         self._frame = None
         self._owner = owner
-        self.food_stat_label=None
-        self.play_stat_label=None
+        self.food_stat_label = None
+        self.play_stat_label = None
         self._initialize()
         self._owner.owners_cat.stats_thread()
 
     def pack(self):
+        """Pakkaa näkymän.
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Tuhoaa näkymän.
+        """
         self._frame.destroy()
-    
-    def handle_food_button_click(self):
+
+    def _handle_food_button_click(self):
+        """Napinpainallus kasvattaa kissan ruokaprosenttia.
+        """
         self._owner.feed_cat(self._owner.owners_cat)
-        self.food_stat_label.config(text=f"{self._owner.owners_cat.food_percent}/100")  
-        #self.update_stat_labels()
+        self.food_stat_label.config(
+            text=f"{self._owner.owners_cat.food_percent}/100")
         print(self._owner.owners_cat.food_percent)
 
-    def handle_play_button_click(self):
+    def _handle_play_button_click(self):
+        """Napinpainallus kasvattaa kissan leikkiprosenttia.
+        """
         self._owner.play_cat(self._owner.owners_cat)
-        self.play_stat_label.config(text=f"{self._owner.owners_cat.play_percent}/100")
+        self.play_stat_label.config(
+            text=f"{self._owner.owners_cat.play_percent}/100")
         print(self._owner.owners_cat.play_percent)
 
-    def handle_return_button_click(self):
-        self._owner.owners_cat.countdown=False
+    def _handle_return_button_click(self):
+        """Napinpainallus siirtää käyttäjän start-näkymään.
+        """
+        self._owner.owners_cat.countdown = False
         self._handle_start()
-    
-    def update_stat_labels(self):
-        self.food_stat_label.config(text=f"{self._owner.owners_cat.food_percent}/100")  
-        self.play_stat_label.config(text=f"{self._owner.owners_cat.play_percent}/100")
-        self._frame.after(500, self.update_stat_labels)
+
+    def _update_stat_labels(self):
+        """Päivittää prosentit sekä kehyksen.
+        """
+        self.food_stat_label.config(
+            text=f"{self._owner.owners_cat.food_percent}/100")
+        self.play_stat_label.config(
+            text=f"{self._owner.owners_cat.play_percent}/100")
+        self._frame.after(500, self._update_stat_labels)
 
     def _initialize(self):
+        """Alustaa näkymän.
+        """
         self._frame = ttk.Frame(master=self._root)
         name_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text=f"Nimesi on {self._owner.name}, kissasi nimi on {self._owner.owners_cat}."
         )
 
         food_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text="Ruoka-tarve"
-            )
+        )
         self.food_stat_label = ttk.Label(
             master=self._frame,
             text=f"{self._owner.owners_cat.food_percent}/100"
-            )
+        )
 
         play_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text="Leikki-tarve"
-            )
+        )
         self.play_stat_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text=f"{self._owner.owners_cat.play_percent}/100"
-            )
+        )
         cat_label = ttk.Label(
             master=self._frame,
             text="Kuva \nkissasta \ntähän"
-            )
+        )
         comment_label = ttk.Label(
             master=self._frame,
             text="Kissa sanoo jotain"
@@ -74,21 +101,21 @@ class CatView:
         food_button = ttk.Button(
             master=self._frame,
             text=f"Ruoki minua! {emoji.emojize(':face_savoring_food:')}",
-            command=self.handle_food_button_click
+            command=self._handle_food_button_click
         )
         play_button = ttk.Button(
             master=self._frame,
             text=f"Leiki kanssani! {emoji.emojize(':star-struck:')}",
-            command=self.handle_play_button_click
+            command=self._handle_play_button_click
         )
 
         return_button = ttk.Button(
             master=self._frame,
             text="Takaisin",
-            command=self.handle_return_button_click
+            command=self._handle_return_button_click
         )
 
-        self.update_stat_labels()
+        self._update_stat_labels()
 
         name_label.grid(row=0, column=0, columnspan=4)
         food_label.grid(row=1, column=3)

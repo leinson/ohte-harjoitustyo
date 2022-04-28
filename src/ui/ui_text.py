@@ -54,7 +54,7 @@ class UserInterface:
             print("Anna ensin kissallesi nimi.")
 
     def start_percent_decrease(self):
-        self.owner.owners_cat.countdown=True
+        self.owner.owners_cat.countdown = True
         self.owner.owners_cat.stats_thread()
 
     def check_owner_cat_not_none(self):
@@ -70,7 +70,7 @@ class UserInterface:
 
             create_input = input("komento: ")
             if create_input == "0":
-                self.owner.owners_cat.countdown=False
+                self.owner.owners_cat.countdown = False
                 print("Olipa kivaa, kiitos ja mau!")
                 break
             if create_input == "1":

@@ -1,8 +1,20 @@
 from tkinter import StringVar, ttk, constants
 from entities_and_services.owner_and_cat import Owner, owner
 import emoji
+
+
 class StartView:
+    """Luokka, joka kuvastaa aloitusnäkymää graafisessa käyttöliittymässä.
+    """
     def __init__(self, root, handle_cat, handle_info, exit_appl):
+        """Luokan konstruktori, joka luo näkymän.
+
+        Args:
+            root: GUI juuri.
+            handle_cat: Polku Kissa-näkymään.
+            handle_info: Polku Ohjeet-näkymään
+            exit_appl: Polku sovelluksen sulkemiseen napilla.
+        """
         self._root = root
         self._handle_cat = handle_cat
         self._handle_info = handle_info
@@ -15,50 +27,59 @@ class StartView:
         self._initialize()
 
     def pack(self):
+        """Pakkaa näkymän.
+        """
         self._frame.pack(fill=constants.X)
 
     def destroy(self):
+        """Tuhoaa näkymän.
+        """
         self._frame.destroy()
-    
+
     def _handle_start_button_click(self):
-            self.owner = owner          
-            entry_value_user = self._entry_user.get()
-            entry_value_cat = self._entry_cat.get()
-            self.owner.add_owner_name(entry_value_user)
-            self.owner.add_cat_and_name(entry_value_cat)
-            self.owner.owners_cat.countdown=True
-            self._handle_cat()
+        """Luo Owner ja PetCat oliot käyttäjän syöttämien tietojen mukaan
+        ja siirtyy Kissa-näkymään.
+        """
+        self.owner = owner
+        entry_value_user = self._entry_user.get()
+        entry_value_cat = self._entry_cat.get()
+        self.owner.add_owner_name(entry_value_user)
+        self.owner.add_cat_and_name(entry_value_cat)
+        self.owner.owners_cat.countdown = True
+        self._handle_cat()
 
     def _initialize(self):
+        """Alustaa näkymän.
+        """
         self._frame = ttk.Frame(master=self._root)
 
         heading_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text="Tämä on MiukuM@uku, virtuaalinen kissalemmikkisovellus.\nLuethan ohjeet, ennen kuin aloitat.\nSyötä tiedot alle:"
-            )
+        )
         user_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text="Nimesi:"
-            )
+        )
         self._entry_user = ttk.Entry(
-            master=self._frame, 
+            master=self._frame,
             textvariable=StringVar()
-            )
+        )
 
         cat_label = ttk.Label(
-            master=self._frame, 
+            master=self._frame,
             text="Kissan nimi:"
-            )
+        )
         self._entry_cat = ttk.Entry(
-            master=self._frame, 
+            master=self._frame,
             textvariable=StringVar()
-            )
+        )
 
         start_button = ttk.Button(
             master=self._frame,
             text=f"Aloita! {emoji.emojize(':cat_face:')}",
-            command= self._handle_start_button_click
-            )
+            command=self._handle_start_button_click
+        )
 
         info_button = ttk.Button(
             master=self._frame,
