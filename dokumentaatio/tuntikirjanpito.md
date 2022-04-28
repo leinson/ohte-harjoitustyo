@@ -12,5 +12,6 @@
 | 21.4 | 5 | pakkausrakenne, lyöty päätä seinään import module errorien kanssa, ensimmäisiä palasia sovelluslogiikasta integroitu gui, käyttäjän ja kissan nimen siirtyminen näkymästä toiseen, play+feed nappien painaminen muuttaa statsien arvoa gui-näkymässä. |
 | 23.4 | 3 | Laajennettu testikattavuutta 71%, mietitty entities/services konsepteina ja nimetty classes kansio entities_and_services – (pohdintaa, jatkossa jos aikaa, tietyt metodit voisi poimia pois itse Petcat ja Owner luokista omiin service luokkiin?). Pylint-virhekatsaus ja korjaus. Tehty kissa ja sen eri versiot. |
 | 26.4 | 2 | Tehty harjoitustyön viikkopalautukseen liittyviä tehtäviä (changelog, release, testattu että kaikki toimii). |
+| 27.4 | 5 | vko6: Integroitu countown gui:iin ja tehty siihen liittyviä muutoksia koodiin(countdown thread loppuu kun sovellus päättyy, ei jää pyörii taustalle eri näkymien välillä..). Riippuvuuksiin erillinen emoji-kirjasto ja tätä implementoitu. Lisätty tekstikenttä kissanäkymään mihin jatkossa kissan kommentteja. |
 
-Tuntien yhteissumma: 30,5h
+Tuntien yhteissumma: 35,5h
