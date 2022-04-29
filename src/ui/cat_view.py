@@ -1,4 +1,6 @@
-from tkinter import Tk, ttk, constants
+from tkinter import PhotoImage, Tk, ttk, constants
+from tkinter import *
+from PIL import Image, ImageTk
 from entities_and_services.owner_and_cat import Owner, owner
 from ui.start_view import StartView
 import emoji
@@ -20,6 +22,9 @@ class CatView:
         self._owner = owner
         self.food_stat_label = None
         self.play_stat_label = None
+        self._cat_label = None
+        #self.cat_image = PhotoImage(file=self._owner.owners_cat.cat_mood_img)
+        self.cat_image = ImageTk.PhotoImage(Image.open(self._owner.owners_cat.cat_mood_img))
         self._initialize()
         self._owner.owners_cat.stats_thread()
 
@@ -32,7 +37,7 @@ class CatView:
         """Tuhoaa näkymän.
         """
         self._frame.destroy()
-
+    
     def _handle_food_button_click(self):
         """Napinpainallus kasvattaa kissan ruokaprosenttia.
         """
@@ -55,14 +60,20 @@ class CatView:
         self._owner.owners_cat.countdown = False
         self._handle_start()
 
-    def _update_stat_labels(self):
-        """Päivittää prosentit sekä kehyksen.
+    def _update_labels(self):
+        """Päivittää prosentit ja kissakuvan.
         """
         self.food_stat_label.config(
             text=f"{self._owner.owners_cat.food_percent}/100")
         self.play_stat_label.config(
             text=f"{self._owner.owners_cat.play_percent}/100")
-        self._frame.after(500, self._update_stat_labels)
+        
+        #Kissakuvan päivittäminen ei toimi, kokeiltu PIL ja peruskuvana
+        self._cat_label.configure(
+            image=self.cat_image)
+        self._cat_label.image=self.cat_image
+
+        self._frame.after(500, self._update_labels)
 
     def _initialize(self):
         """Alustaa näkymän.
@@ -90,9 +101,9 @@ class CatView:
             master=self._frame,
             text=f"{self._owner.owners_cat.play_percent}/100"
         )
-        cat_label = ttk.Label(
+        self._cat_label = ttk.Label(
             master=self._frame,
-            text="Kuva \nkissasta \ntähän"
+            image=self.cat_image
         )
         comment_label = ttk.Label(
             master=self._frame,
@@ -115,7 +126,7 @@ class CatView:
             command=self._handle_return_button_click
         )
 
-        self._update_stat_labels()
+        self._update_labels()
 
         name_label.grid(row=0, column=0, columnspan=4)
         food_label.grid(row=1, column=3)
@@ -123,7 +134,7 @@ class CatView:
         play_label.grid(row=2, column=3)
         self.play_stat_label.grid(row=2, column=4)
         comment_label.grid(row=2, column=0, columnspan=3)
-        cat_label.grid(row=3, column=0, columnspan=3, rowspan=3)
+        self._cat_label.grid(row=3, column=0, columnspan=3, rowspan=3)
         food_button.grid(row=6, column=3, columnspan=2)
         play_button.grid(row=7, column=3, columnspan=2)
         return_button.grid(row=9, column=0)

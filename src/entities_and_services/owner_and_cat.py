@@ -70,10 +70,11 @@ class PetCat:
         Args:
             name (string): Käyttäjän syöttämä kissan nimi.
         """
-        self.food_percent = 20  # randint(20,100)
+        self.food_percent = 20 
         self.play_percent = 20
         self.name = name
         self.countdown = False
+        self.cat_mood_img = "src/assets/cat_happy.png"
 
     def stats_percent(self, action, percent):
         """Korottaa kissan stats prosentteja määritetyn toiminnon mukaan.
@@ -94,6 +95,7 @@ class PetCat:
             if self.countdown is True:
                 self.food_percent -= 5
                 self.play_percent -= 5
+                self.change_cat_mood()
                 time.sleep(5)
             else:
                 break
@@ -105,6 +107,15 @@ class PetCat:
         """
         countdown_thread = threading.Thread(target=self.stats_decrease)
         countdown_thread.start()
+    
+    def change_cat_mood(self):
+        if self.play_percent > 50:
+            self.cat_mood_img = "src/assets/cat_happy.png"
+        # if self.play_percent > 50 and self.food_percent > 50:
+        #     if self.food_percent <=100:
+        #         self.cat_mood_img= "src/assets/cat_happy.png"
+        #     else:
+        #         self.cat_mood_img= "src/assets/cat_happy_chunky.png"
 
     def run_away(self):
         """print tulostus, kun kissan prosentit menevät alle 0.
