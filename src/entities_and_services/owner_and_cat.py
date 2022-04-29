@@ -29,6 +29,11 @@ class Owner:
         """
         new_cat = PetCat(cat_name)
         self.owners_cat = new_cat
+    
+    def are_names_valid(self, owner_name, cat_name):
+        if owner_name == "" or cat_name== "":
+            return False
+        return True
 
     def feed_cat(self, cat):
         """Korottaa kissan ruokaprosenttia.
@@ -36,7 +41,7 @@ class Owner:
         Args:
             cat (object): omistajaan liitetty kissa-olio.
         """
-        cat.stats_percent("food", 10)
+        return cat.stats_percent("food", 10)
 
     def play_cat(self, cat):
         """Korottaa kissan leikkiprosenttia.
@@ -44,7 +49,7 @@ class Owner:
         Args:
             cat (object): omistajaan littetty kissa-olio.
         """
-        cat.stats_percent("play", 10)
+        return cat.stats_percent("play", 10)
 
     def __str__(self):
         """Palauttaa käyttäjän ja kissan nimet.
@@ -84,14 +89,22 @@ class PetCat:
             percent (int): Minkä verran prosentteja korotetaan
         """
         if action == "food":
+            if self.food_percent>115:
+                return f"over_limit"
+            elif self.food_percent<0:
+                return f"under_limit"
             self.food_percent += percent
         if action == "play":
+            if self.play_percent>115:
+                return f"over_limit"
+            elif self.play_percent<0:
+                return f"under_limit"
             self.play_percent += percent
 
     def stats_decrease(self):
         """Alentaa kissan prosentteja tietyn aikavälin mukaan. Lopettaa ehtojen mukaan.
         """
-        while self.food_percent > 0 and self.play_percent > 0:
+        while self.food_percent >= 0 and self.play_percent >= 0:
             if self.countdown is True:
                 self.food_percent -= 5
                 self.play_percent -= 5

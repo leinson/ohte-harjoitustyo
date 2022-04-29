@@ -23,6 +23,7 @@ class CatView:
         self.food_stat_label = None
         self.play_stat_label = None
         self._cat_label = None
+        self._comment_label = None
         #self.cat_image = PhotoImage(file=self._owner.owners_cat.cat_mood_img)
         self.cat_image = ImageTk.PhotoImage(Image.open(self._owner.owners_cat.cat_mood_img))
         self._initialize()
@@ -40,19 +41,33 @@ class CatView:
     
     def _handle_food_button_click(self):
         """Napinpainallus kasvattaa kissan ruokaprosenttia.
-        """
-        self._owner.feed_cat(self._owner.owners_cat)
+        """        
+        food_limit=self._owner.feed_cat(self._owner.owners_cat)
+        if food_limit=="under_limit":
+            self._comment_label.config(
+                text="Karkasin jo, senkin typerys!")
+        elif food_limit=="over_limit":
+            self._comment_label.config(
+                text="Tykkään ruuasta, mut nyt sain tarpeekseni!")
         self.food_stat_label.config(
             text=f"{self._owner.owners_cat.food_percent}/100")
-        print(self._owner.owners_cat.food_percent)
+        #print(self._owner.owners_cat.food_percent)
 
     def _handle_play_button_click(self):
         """Napinpainallus kasvattaa kissan leikkiprosenttia.
         """
+        play_limit=self._owner.play_cat(self._owner.owners_cat)
+        if play_limit=="under_limit":
+            self._comment_label.config(
+                text="Karkasin jo, senkin typerys!")
+        elif play_limit=="over_limit":
+            self._comment_label.config(
+                text="Hei en jaksa enää, kohta saat tassua naamaan!")
+
         self._owner.play_cat(self._owner.owners_cat)
         self.play_stat_label.config(
             text=f"{self._owner.owners_cat.play_percent}/100")
-        print(self._owner.owners_cat.play_percent)
+        #print(self._owner.owners_cat.play_percent)
 
     def _handle_return_button_click(self):
         """Napinpainallus siirtää käyttäjän start-näkymään.
@@ -105,9 +120,13 @@ class CatView:
             master=self._frame,
             image=self.cat_image
         )
-        comment_label = ttk.Label(
+        self._comment_label = ttk.Label(
             master=self._frame,
-            text="Kissa sanoo jotain"
+            text="esim nam oli hyvää"
+        )
+        self._mood_label = ttk.Label(
+            master=self._frame,
+            text="esim minulla on nälkä"
         )
         food_button = ttk.Button(
             master=self._frame,
@@ -133,7 +152,8 @@ class CatView:
         self.food_stat_label.grid(row=1, column=4)
         play_label.grid(row=2, column=3)
         self.play_stat_label.grid(row=2, column=4)
-        comment_label.grid(row=2, column=0, columnspan=3)
+        self._comment_label.grid(row=3, column=4)
+        self._mood_label.grid(row=4, column=4)
         self._cat_label.grid(row=3, column=0, columnspan=3, rowspan=3)
         food_button.grid(row=6, column=3, columnspan=2)
         play_button.grid(row=7, column=3, columnspan=2)

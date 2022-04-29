@@ -23,7 +23,7 @@ class StartView:
         self._entry_user = None
         self._entry_cat = None
         self.owner = None
-
+        self.comment_label = None
         self._initialize()
 
     def pack(self):
@@ -38,16 +38,25 @@ class StartView:
 
     def _handle_start_button_click(self):
         """Luo Owner ja PetCat oliot käyttäjän syöttämien tietojen mukaan
-        ja siirtyy Kissa-näkymään.
+        ja siirtyy Kissa-näkymään jos nimet eivät ole tyhjiä.
         """
         self.owner = owner
         entry_value_user = self._entry_user.get()
         entry_value_cat = self._entry_cat.get()
-        #Tarkista, oliko tyhjiä - jos tyhjiä siirry update_comment_label
-        self.owner.add_owner_name(entry_value_user)
-        self.owner.add_cat_and_name(entry_value_cat)
-        self.owner.owners_cat.countdown = True
-        self._handle_cat()
+        if self.owner.are_names_valid(entry_value_user,entry_value_cat) is False:
+            self._update_comment_label()
+        else:
+            self.owner.add_owner_name(entry_value_user)
+            self.owner.add_cat_and_name(entry_value_cat)
+            self.owner.owners_cat.countdown = True
+            self._handle_cat()
+
+    def _update_comment_label(self):    
+        """Päivittää kommenttikentän.
+        """
+
+        self.comment_label.config(
+            text="Syötä ensin oma nimesi ja kissasi nimi.")
 
     def _initialize(self):
         """Alustaa näkymän.
@@ -92,9 +101,9 @@ class StartView:
             text="Poistu",
             command=self._exit_appl
         )
-        comment_label = ttk.Label(
+        self.comment_label = ttk.Label(
             master=self._frame,
-            text=f"huomio-kommentteja tähän"
+            text=f""
         )
     
         heading_label.grid(row=0, column=0, columnspan=2,sticky=constants.W, padx=5, pady=15)
@@ -105,5 +114,5 @@ class StartView:
         info_button.grid(row=3, column=0, sticky=constants.W, padx=5, pady=15)
         start_button.grid(row=3, column=1, sticky=(constants.W, constants.E), padx=5, pady=5)
         exit_button.grid(row=4, column=0, sticky=constants.W, padx=5, pady=5)
-        comment_label.grid(row=4, column=1, sticky=(constants.W))
+        self.comment_label.grid(row=4, column=1, sticky=(constants.W))
         self._root.grid_columnconfigure(1, weight=1, minsize=400)
