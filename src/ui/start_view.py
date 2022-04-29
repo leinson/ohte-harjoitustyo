@@ -43,6 +43,7 @@ class StartView:
         self.owner = owner
         entry_value_user = self._entry_user.get()
         entry_value_cat = self._entry_cat.get()
+        #Tarkista, oliko tyhjiä - jos tyhjiä siirry update_comment_label
         self.owner.add_owner_name(entry_value_user)
         self.owner.add_cat_and_name(entry_value_cat)
         self.owner.owners_cat.countdown = True
@@ -91,21 +92,18 @@ class StartView:
             text="Poistu",
             command=self._exit_appl
         )
-
-        # columnspan levii 2 sarakkeelle
-        heading_label.grid(row=0, column=0, columnspan=2,
-                           sticky=constants.W, padx=5, pady=15)
-
+        comment_label = ttk.Label(
+            master=self._frame,
+            text=f"huomio-kommentteja tähän"
+        )
+    
+        heading_label.grid(row=0, column=0, columnspan=2,sticky=constants.W, padx=5, pady=15)
         user_label.grid(row=1, column=0, padx=5, pady=5, sticky=constants.W)
-        self._entry_user.grid(row=1, column=1, sticky=(
-            constants.W, constants.E), padx=5, pady=5)
+        self._entry_user.grid(row=1, column=1, sticky=(constants.W, constants.E), padx=5, pady=5)
         cat_label.grid(row=2, column=0, sticky=constants.W, padx=5, pady=5)
-        self._entry_cat.grid(row=2, column=1, sticky=(
-            constants.W, constants.E), padx=5, pady=5)
-
+        self._entry_cat.grid(row=2, column=1, sticky=(constants.W, constants.E), padx=5, pady=5)
         info_button.grid(row=3, column=0, sticky=constants.W, padx=5, pady=15)
-        start_button.grid(row=3, column=1, sticky=(
-            constants.W, constants.E), padx=5, pady=5)
+        start_button.grid(row=3, column=1, sticky=(constants.W, constants.E), padx=5, pady=5)
         exit_button.grid(row=4, column=0, sticky=constants.W, padx=5, pady=5)
-
+        comment_label.grid(row=4, column=1, sticky=(constants.W))
         self._root.grid_columnconfigure(1, weight=1, minsize=400)
