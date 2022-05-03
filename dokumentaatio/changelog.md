@@ -30,5 +30,17 @@
 - Tehty GitHub release.
 
 ## Viikko 6
-- Countdown integroitu graafiseen käyttöliittymään, eli ruoka ja leikkiprosentit vähenevät automaattisesti.
+- Countdown integroitu graafiseen käyttöliittymään, eli ruoka ja leikkiprosentit vähenevät automaattisesti kissanäkymässä.
 - Ulkoinen `emoji` kirjasto lisätty ja käytetty sovelluksessa.
+- Kissakuvat integroitu käyttöliittymään. Kuvien vaihto ei vielä saatu toimimaan. 
+- Lisätty kommenttikenttiä start- ja kissanäkymiin. Kissanäkymän kommentteja vielä lisätään.
+- Asetettu reunaehtoja:
+	- Jos nimikenttä/-kentät ovat tyhjiä, ei päästä eteenpäin:kommenttikenttään tästä ilmoitus
+	- Jos syöttää tai leikittää kissaa tietyn rajan yli, prosentit eivät enää nouse: kommenttikenttään ilmoitus
+	- Jos jompikumpi prosentti putoaa nollan alle, prosentteja ei saa enää nostettua. Jos nappeja painaa, tulee ilmoitus kissan karanneen.
+- Alustava arkkitehtuurikuvaus tehty, sisältäen mm. edellisviikon poisjääneen sekvenssikaavion.
+- Alustava käyttöohje tehty.
+- Docstring dokumentaatio aloitettu ja katettu yli 50%. 
+- Laajennettu testikattavuutta
+- Siistitty koodia pylintin mukaan sekä itse tarkasteltu mm. Clean Code ja Single responsibility näkökulmista.
+- Tehty toka GitHub release.
