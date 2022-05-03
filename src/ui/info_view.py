@@ -4,6 +4,7 @@ from tkinter import Tk, ttk, constants
 class InfoView:
     """Luokka, joka kuvastaa Ohjeet näkymää graafisessa käyttöliittymässä.
     """
+
     def __init__(self, root, handle_start):
         """Luokan konstruktori, joka luo näkymän.
 

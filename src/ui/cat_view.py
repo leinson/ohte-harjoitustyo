@@ -9,6 +9,7 @@ import emoji
 class CatView:
     """Luokka, joka kuvastaa kissa-näkymää graafisessa käyttöliittymässä.
     """
+
     def __init__(self, root, handle_start):
         """Luokan konstruktori, joka luo näkymän.
 
@@ -25,7 +26,8 @@ class CatView:
         self._cat_label = None
         self._comment_label = None
         #self.cat_image = PhotoImage(file=self._owner.owners_cat.cat_mood_img)
-        self.cat_image = ImageTk.PhotoImage(Image.open(self._owner.owners_cat.cat_mood_img))
+        self.cat_image = ImageTk.PhotoImage(
+            Image.open(self._owner.owners_cat.cat_mood_img))
         self._initialize()
         self._owner.owners_cat.stats_thread()
 
@@ -38,36 +40,40 @@ class CatView:
         """Tuhoaa näkymän.
         """
         self._frame.destroy()
-    
+
     def _handle_food_button_click(self):
         """Napinpainallus kasvattaa kissan ruokaprosenttia.
-        """        
-        food_limit=self._owner.feed_cat(self._owner.owners_cat)
-        if food_limit=="under_limit":
+        Prosentti ei kasva, jos ruoka tai leikkiprosentti on jo alle 0,
+        tai jos ruokaprosentti on liian korkea.
+        """
+        food_limit = self._owner.feed_cat(self._owner.owners_cat)
+        if food_limit == "under_limit":
             self._comment_label.config(
                 text="Karkasin jo, senkin typerys!")
-        elif food_limit=="over_limit":
+        elif food_limit == "over_limit":
             self._comment_label.config(
                 text="Tykkään ruuasta, mut nyt sain tarpeekseni!")
         self.food_stat_label.config(
             text=f"{self._owner.owners_cat.food_percent}/100")
-        #print(self._owner.owners_cat.food_percent)
+        # print(self._owner.owners_cat.food_percent)
 
     def _handle_play_button_click(self):
         """Napinpainallus kasvattaa kissan leikkiprosenttia.
+        Prosentti ei kasva, jos leikki tai ruokaprosentti on jo alle 0,
+        tai jos leikkiprosentti on liian korkea.
         """
-        play_limit=self._owner.play_cat(self._owner.owners_cat)
-        if play_limit=="under_limit":
+        play_limit = self._owner.play_cat(self._owner.owners_cat)
+        if play_limit == "under_limit":
             self._comment_label.config(
                 text="Karkasin jo, senkin typerys!")
-        elif play_limit=="over_limit":
+        elif play_limit == "over_limit":
             self._comment_label.config(
                 text="Hei en jaksa enää, kohta saat tassua naamaan!")
 
         self._owner.play_cat(self._owner.owners_cat)
         self.play_stat_label.config(
             text=f"{self._owner.owners_cat.play_percent}/100")
-        #print(self._owner.owners_cat.play_percent)
+        # print(self._owner.owners_cat.play_percent)
 
     def _handle_return_button_click(self):
         """Napinpainallus siirtää käyttäjän start-näkymään.
@@ -82,11 +88,11 @@ class CatView:
             text=f"{self._owner.owners_cat.food_percent}/100")
         self.play_stat_label.config(
             text=f"{self._owner.owners_cat.play_percent}/100")
-        
-        #Kissakuvan päivittäminen ei toimi, kokeiltu PIL ja peruskuvana
+
+        # Kissakuvan päivittäminen ei toimi, kokeiltu PIL ja peruskuvana
         self._cat_label.configure(
             image=self.cat_image)
-        self._cat_label.image=self.cat_image
+        self._cat_label.image = self.cat_image
 
         self._frame.after(500, self._update_labels)
 
@@ -101,7 +107,7 @@ class CatView:
 
         food_label = ttk.Label(
             master=self._frame,
-            text="Ruoka-tarve"
+            text="Ruoka-tarve:"
         )
         self.food_stat_label = ttk.Label(
             master=self._frame,
@@ -110,7 +116,7 @@ class CatView:
 
         play_label = ttk.Label(
             master=self._frame,
-            text="Leikki-tarve"
+            text="Leikki-tarve:"
         )
         self.play_stat_label = ttk.Label(
             master=self._frame,
@@ -147,14 +153,21 @@ class CatView:
 
         self._update_labels()
 
-        name_label.grid(row=0, column=0, columnspan=4)
-        food_label.grid(row=1, column=3)
-        self.food_stat_label.grid(row=1, column=4)
-        play_label.grid(row=2, column=3)
-        self.play_stat_label.grid(row=2, column=4)
-        self._comment_label.grid(row=3, column=4)
-        self._mood_label.grid(row=4, column=4)
+        name_label.grid(row=0, column=0, columnspan=4, sticky=constants.W)
+        food_label.grid(row=1, column=3, sticky=constants.W)
+        self.food_stat_label.grid(row=1, column=4, sticky=constants.E, padx=25)
+        play_label.grid(row=2, column=3, sticky=constants.W)
+        self.play_stat_label.grid(row=2, column=4, sticky=constants.E, padx=25)
+        self._comment_label.grid(
+            row=3, column=3, sticky=constants.W, columnspan=2)
+        self._mood_label.grid(
+            row=4, column=3, sticky=constants.W, columnspan=2)
         self._cat_label.grid(row=3, column=0, columnspan=3, rowspan=3)
-        food_button.grid(row=6, column=3, columnspan=2)
-        play_button.grid(row=7, column=3, columnspan=2)
-        return_button.grid(row=9, column=0)
+        food_button.grid(row=6, column=3, sticky=(
+            constants.W, constants.E), columnspan=2, padx=10, pady=5)
+        play_button.grid(row=7, column=3, sticky=(
+            constants.W, constants.E), columnspan=2, padx=10, pady=5)
+        return_button.grid(row=7, column=0, sticky=(
+            constants.W, constants.E), padx=10, pady=5)
+        self._frame.grid_columnconfigure(3, weight=1, minsize=150)
+        self._frame.grid_columnconfigure(4, weight=1, minsize=165)

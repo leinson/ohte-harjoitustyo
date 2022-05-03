@@ -29,9 +29,9 @@ class Owner:
         """
         new_cat = PetCat(cat_name)
         self.owners_cat = new_cat
-    
+
     def are_names_valid(self, owner_name, cat_name):
-        if owner_name == "" or cat_name== "":
+        if owner_name == "" or cat_name == "":
             return False
         return True
 
@@ -75,30 +75,38 @@ class PetCat:
         Args:
             name (string): Käyttäjän syöttämä kissan nimi.
         """
-        self.food_percent = 20 
+        self.food_percent = 20
         self.play_percent = 20
         self.name = name
         self.countdown = False
+        self._timer = 5
         self.cat_mood_img = "src/assets/cat_happy.png"
 
     def stats_percent(self, action, percent):
         """Korottaa kissan stats prosentteja määritetyn toiminnon mukaan.
+        Jos jompikumpi prosenteista on alle 0,
+        tai kyseisen toiminnon prosentti on liian korkea,
+        ei prosentteja enää kasvateta.
 
         Args:
             action (string): Mitä prosentteja korotetaan
             percent (int): Minkä verran prosentteja korotetaan
         """
         if action == "food":
-            if self.food_percent>115:
-                return f"over_limit"
-            elif self.food_percent<0:
-                return f"under_limit"
+            if self.food_percent > 115:
+                return "over_limit"
+            if self.food_percent < 0:
+                return "under_limit"
+            if self.play_percent < 0:
+                return "under_limit"
             self.food_percent += percent
         if action == "play":
-            if self.play_percent>115:
-                return f"over_limit"
-            elif self.play_percent<0:
-                return f"under_limit"
+            if self.play_percent > 115:
+                return "over_limit"
+            if self.play_percent < 0:
+                return "under_limit"
+            if self.food_percent < 0:
+                return "under_limit"
             self.play_percent += percent
 
     def stats_decrease(self):
@@ -109,7 +117,7 @@ class PetCat:
                 self.food_percent -= 5
                 self.play_percent -= 5
                 self.change_cat_mood()
-                time.sleep(5)
+                time.sleep(self._timer)
             else:
                 break
         if self.countdown is True:
@@ -120,7 +128,7 @@ class PetCat:
         """
         countdown_thread = threading.Thread(target=self.stats_decrease)
         countdown_thread.start()
-    
+
     def change_cat_mood(self):
         if self.play_percent > 50:
             self.cat_mood_img = "src/assets/cat_happy.png"

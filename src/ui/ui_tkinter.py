@@ -10,6 +10,7 @@ class UI:
     """Luokka, jonka avulla graafinen käyttöliittymä näkyy
     ja näkymien välillä voi siirtyä.
     """
+
     def __init__(self, root):
         """Luokan konstruktori, joka alustaa tyhjän näkymän.
 
