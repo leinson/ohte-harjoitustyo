@@ -11,7 +11,7 @@ Sovelluksen avulla käyttäjä voi luoda virtuaalisen kissan lemmikikseen ja pit
 - Käyttäjä valitsee kissalle nimen /tehty gui
 
 - Käyttäjä näkee: 
-	- kissan /kissa luotu, ei integroitu gui
+	- kissan /tehty gui
 	- miten nälkäinen kissa on /tehty gui
 	- jos kissa tarvitsee leikittämistä /tehty gui
 
@@ -31,13 +31,13 @@ Kun tekstikäyttöliittymä on saatu toimimaan päivitetään se graafiseksi kä
 
 - Ohjeet-painike, missä pääsee lukemaan ohjeet sovelluksen käyttöä varten. /tehty(teksti tekemättä)
 
-Kissa-näkymä: /tehty paitsi itse kissa
+Kissa-näkymä: /tehty
 
-- Kissa:
-	- Kissan ilme muuttuu sen mukaan, miten täynnä tarpeet-palkit ovat.
+- Kissa: 
+	- Kissan ilme muuttuu sen mukaan, miten täynnä tarpeet-palkit ovat. /kuvat luotu, näiden päivittäminen gui ei saatu vielä toimimaan.
 	- Kissan keho kapeutuu kun nälkä-palkki on lähes tyhjä
 	- Kissan keho suurentuu kun nälkä-palkki on täynnä ja syöttäminen jatkuu
-	- Kissa sanoo asioita, esimerkiksi varoittaa ennen kun palkit ovat tyhjät, ja ilmaisee onnellisuutta kun ovat täynnä.
+	- Kissa sanoo asioita, esimerkiksi varoittaa ennen kun palkit ovat tyhjät, ja ilmaisee onnellisuutta kun ovat täynnä. /tehty
 	
 - Palkit tai prosentit, missä näkyy ruoka- ja leikki-tarpeet (esim. nälkä: 50/100)./tehty
 - Taustakuva
