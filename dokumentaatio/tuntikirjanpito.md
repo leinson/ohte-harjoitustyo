@@ -16,5 +16,6 @@
 | 28.4 | 1,5 | Docstring, pieniä korjauksia, koodin laadun siistimistä ja tarkastamista. |
 | 29.4 | 5 | Laadittu arkkitehtuurikuvaus, tehty käyttöohje, saatu kissa näkymään gui, yritetty saada kissakuvat vaihtumaan prosenttien mukaan-en saanut vielä toimimaan. Startnäkymään huomiokommentti jos nimet tyhjiä + ei päästä eteenpäin. Hieman muutettu kissanäkymä-layoutia, lisätty toinen kommenttikenttä missä kissa kommentoi olotilaansa. Asetettu rajat prosenteille:painikkeilla ei saa korotettua yli 125/100, ja kun prosentit tippuvat alle 0 painikkeet eivät enää korota arvoja. |
 | 3.5 | 3 | Korjattu bugi liittyen prosenttien päivitykseen. Siistitty käyttöliittymän asettelua. Edistetty testaamista 88%. Korjattu pylint virheitä, nyt 1pylint virhe, 9,78/10. Päivitetty changelog, tuntikirjanpito, readme, uusi release. |
+| 4.5 | 1,5 | vko 7: Kissakuvien vaihtuminen prosenttien päivittämisen mukaan saatu toimimaan! Tässä vaiheessa vain kahdella kuvalla testimielessä. |
 
-Tuntien yhteissumma: 45h
+Tuntien yhteissumma: 46,5h
