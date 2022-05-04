@@ -59,7 +59,9 @@ class TestPetCat(unittest.TestCase):
         self.cat.stats_decrease()
         self.assertEqual(self.cat.food_percent, -5)
 
+    #palauta under tai over limit
 
+    
 class TestOwner(unittest.TestCase):
     def setUp(self):
         self.owner = Owner()

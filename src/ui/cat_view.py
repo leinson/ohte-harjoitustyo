@@ -25,9 +25,10 @@ class CatView:
         self.play_stat_label = None
         self._cat_label = None
         self._comment_label = None
-        #self.cat_image = PhotoImage(file=self._owner.owners_cat.cat_mood_img)
-        self.cat_image = ImageTk.PhotoImage(
-            Image.open(self._owner.owners_cat.cat_mood_img))
+        self._cat_happy = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_happy.png"))
+        self._cat_meh = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_meh.png"))
         self._initialize()
         self._owner.owners_cat.stats_thread()
 
@@ -80,6 +81,14 @@ class CatView:
         """
         self._owner.owners_cat.countdown = False
         self._handle_start()
+    
+    def _change_cat_mood(self):
+        """Päivittää kissakuvan prosenttien mukaan. Kesken. 
+        Juuri saatu kuvanvaihto toimimaan :-)
+        """
+        if self._owner.owners_cat.play_percent > 50:
+            self._cat_label.configure(image=self._cat_happy)
+            self._cat_label.image = self._cat_happy
 
     def _update_labels(self):
         """Päivittää prosentit ja kissakuvan.
@@ -88,12 +97,7 @@ class CatView:
             text=f"{self._owner.owners_cat.food_percent}/100")
         self.play_stat_label.config(
             text=f"{self._owner.owners_cat.play_percent}/100")
-
-        # Kissakuvan päivittäminen ei toimi, kokeiltu PIL ja peruskuvana
-        self._cat_label.configure(
-            image=self.cat_image)
-        self._cat_label.image = self.cat_image
-
+        self._change_cat_mood()
         self._frame.after(500, self._update_labels)
 
     def _initialize(self):
@@ -124,7 +128,7 @@ class CatView:
         )
         self._cat_label = ttk.Label(
             master=self._frame,
-            image=self.cat_image
+            image=self._cat_meh
         )
         self._comment_label = ttk.Label(
             master=self._frame,
@@ -151,8 +155,6 @@ class CatView:
             command=self._handle_return_button_click
         )
 
-        self._update_labels()
-
         name_label.grid(row=0, column=0, columnspan=4, sticky=constants.W)
         food_label.grid(row=1, column=3, sticky=constants.W)
         self.food_stat_label.grid(row=1, column=4, sticky=constants.E, padx=25)
@@ -171,3 +173,5 @@ class CatView:
             constants.W, constants.E), padx=10, pady=5)
         self._frame.grid_columnconfigure(3, weight=1, minsize=150)
         self._frame.grid_columnconfigure(4, weight=1, minsize=165)
+        
+        self._update_labels()
