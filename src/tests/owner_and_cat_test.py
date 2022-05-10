@@ -75,12 +75,6 @@ class TestOwner(unittest.TestCase):
         self.owner.add_cat_and_name("Miuku")
         self.assertEqual(self.owner.owners_cat.name, "Miuku")
 
-    def test_if_names_are_empty_return_false(self):
-        self.assertFalse(self.owner.are_names_valid("", ""))
-
-    def test_if_names_valid_return_true(self):
-        self.assertTrue(self.owner.are_names_valid("Owner", "Cat"))
-
     def test_feed_cat_increases_cat_stats(self):
         self.owner.feed_cat(self.cat)
         self.assertEqual(self.cat.food_percent, 30)

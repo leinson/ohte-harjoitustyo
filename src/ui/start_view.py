@@ -44,13 +44,18 @@ class StartView:
         self.owner = owner
         entry_value_user = self._entry_user.get()
         entry_value_cat = self._entry_cat.get()
-        if self.owner.are_names_valid(entry_value_user, entry_value_cat) is False:
+        if self.are_names_valid(entry_value_user, entry_value_cat) is False:
             self._update_comment_label()
         else:
             self.owner.add_owner_name(entry_value_user)
             self.owner.add_cat_and_name(entry_value_cat)
             self.owner.owners_cat.countdown = True
             self._handle_cat()
+
+    def are_names_valid(self, owner_name, cat_name):
+        if owner_name == "" or cat_name == "":
+            return False
+        return True
 
     def _update_comment_label(self):
         """Päivittää kommenttikentän.

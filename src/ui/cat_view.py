@@ -25,10 +25,6 @@ class CatView:
         self.play_stat_label = None
         self._cat_label = None
         self._comment_label = None
-        self._cat_happy = ImageTk.PhotoImage(
-            Image.open("src/assets/cat_happy.png"))
-        self._cat_meh = ImageTk.PhotoImage(
-            Image.open("src/assets/cat_meh.png"))
         self._initialize()
         self._owner.owners_cat.stats_thread()
 
@@ -42,6 +38,35 @@ class CatView:
         """
         self._frame.destroy()
 
+    def _images_of_cat(self):
+        self._cat_happy_chunky = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_happy_chunky.png"))
+        self._cat_happy_hungry = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_happy_hungry.png"))
+        self._cat_happy = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_happy.png"))
+        self._cat_meh_chunky = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_meh_chunky.png"))
+        self._cat_meh_hungry = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_meh_hungry.png"))
+        self._cat_meh = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_meh.png"))
+        self._cat_runaway = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_runaway.png"))
+        self._cat_sad_chunky = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sad_chunky.png"))
+        self._cat_sad_hungry = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sad_hungry.png"))
+        self._cat_sad = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sad.png"))
+        self._cat_sweaty_chunky = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sweaty_chunky.png"))
+        self._cat_sweaty_hungry = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sweaty_hungry.png"))
+        self._cat_sweaty = ImageTk.PhotoImage(
+            Image.open("src/assets/cat_sweaty.png"))
+        
+
     def _handle_food_button_click(self):
         """Napinpainallus kasvattaa kissan ruokaprosenttia.
         Prosentti ei kasva, jos ruoka tai leikkiprosentti on jo alle 0,
@@ -54,9 +79,13 @@ class CatView:
         elif food_limit == "over_limit":
             self._comment_label.config(
                 text="Tykkään ruuasta, mut nyt sain tarpeekseni!")
-        self.food_stat_label.config(
-            text=f"{self._owner.owners_cat.food_percent}/100")
-        # print(self._owner.owners_cat.food_percent)
+        else:
+            self._comment_label.config(
+                text="Nam, olipa hyvää!")
+
+        # self.food_stat_label.config(
+        #     text=f"{self._owner.owners_cat.food_percent} / 100")
+        # # print(self._owner.owners_cat.food_percent)
 
     def _handle_play_button_click(self):
         """Napinpainallus kasvattaa kissan leikkiprosenttia.
@@ -70,11 +99,13 @@ class CatView:
         elif play_limit == "over_limit":
             self._comment_label.config(
                 text="Hei en jaksa enää, kohta saat tassua naamaan!")
+        else:
+            self._comment_label.config(
+                text="Jee leikkiminen on kivaa!")
 
-        self._owner.play_cat(self._owner.owners_cat)
-        self.play_stat_label.config(
-            text=f"{self._owner.owners_cat.play_percent}/100")
-        # print(self._owner.owners_cat.play_percent)
+        # self.play_stat_label.config(
+        #     text=f"{self._owner.owners_cat.play_percent} / 100")
+        # # print(self._owner.owners_cat.play_percent)
 
     def _handle_return_button_click(self):
         """Napinpainallus siirtää käyttäjän start-näkymään.
@@ -83,26 +114,82 @@ class CatView:
         self._handle_start()
     
     def _change_cat_mood(self):
-        """Päivittää kissakuvan prosenttien mukaan. Kesken. 
-        Juuri saatu kuvanvaihto toimimaan :-)
+        """Päivittää kissakuvan ja mood-tekstikentän prosenttien mukaan.
         """
-        if self._owner.owners_cat.play_percent > 50:
-            self._cat_label.configure(image=self._cat_happy)
-            self._cat_label.image = self._cat_happy
+        if self._owner.owners_cat.play_percent < 0 or self._owner.owners_cat.food_percent < 0:
+            self._cat_label.configure(image=self._cat_runaway)
+            self._cat_label.image = self._cat_runaway
 
+        elif self._owner.owners_cat.play_percent > 100:
+            if self._owner.owners_cat.food_percent > 100:
+                self._cat_label.configure(image=self._cat_sweaty_chunky)
+                self._cat_label.image = self._cat_sweaty_chunky
+                self._mood_label.config(text="")
+            elif self._owner.owners_cat.food_percent >= 50:
+                self._cat_label.configure(image=self._cat_sweaty)
+                self._cat_label.image = self._cat_sweaty
+                self._mood_label.config(text="")
+            else:
+                self._cat_label.configure(image=self._cat_sweaty_hungry)
+                self._cat_label.image = self._cat_sweaty_hungry
+                self._mood_label.config(text="Ihan hirvee nälkä!")
+
+        elif self._owner.owners_cat.play_percent >= 70:
+            if self._owner.owners_cat.food_percent > 100:
+                self._cat_label.configure(image=self._cat_happy_chunky)
+                self._cat_label.image = self._cat_happy_chunky
+                self._mood_label.config(text="")
+            elif self._owner.owners_cat.food_percent >= 50:
+                self._cat_label.configure(image=self._cat_happy)
+                self._cat_label.image = self._cat_happy
+                self._mood_label.config(text="")
+            else:
+                self._cat_label.configure(image=self._cat_happy_hungry)
+                self._cat_label.image = self._cat_happy_hungry
+                self._mood_label.config(text="Ihan hirvee nälkä!")
+
+        elif self._owner.owners_cat.play_percent >= 30:
+            if self._owner.owners_cat.food_percent > 100:
+                self._cat_label.configure(image=self._cat_meh_chunky)
+                self._cat_label.image = self._cat_happy_chunky
+                self._mood_label.config(text="")
+            elif self._owner.owners_cat.food_percent >= 50:
+                self._cat_label.configure(image=self._cat_meh)
+                self._cat_label.image = self._cat_happy
+                self._mood_label.config(text="")
+            else:
+                self._cat_label.configure(image=self._cat_meh_hungry)
+                self._cat_label.image = self._cat_meh_hungry
+                self._mood_label.config(text="Ihan hirvee nälkä!")
+        else:
+            if self._owner.owners_cat.food_percent > 100:
+                self._cat_label.configure(image=self._cat_sad_chunky)
+                self._cat_label.image = self._cat_sad_chunky
+                self._mood_label.config(text="Hei leikitäänkö, pliis suruemoji")
+            elif self._owner.owners_cat.food_percent >= 50:
+                self._cat_label.configure(image=self._cat_sad)
+                self._cat_label.image = self._cat_sad
+                self._mood_label.config(text="Hei leikitäänkö, pliis suruemoji")
+            else:
+                self._cat_label.configure(image=self._cat_sad_hungry)
+                self._cat_label.image = self._cat_sad_hungry
+                self._mood_label.config(text="Tilanne aika sos, ruokaa ja leikkimistä heti!")
+          
     def _update_labels(self):
         """Päivittää prosentit ja kissakuvan.
         """
         self.food_stat_label.config(
-            text=f"{self._owner.owners_cat.food_percent}/100")
+            text=f"{self._owner.owners_cat.food_percent} / 100")
         self.play_stat_label.config(
-            text=f"{self._owner.owners_cat.play_percent}/100")
+            text=f"{self._owner.owners_cat.play_percent} / 100")
         self._change_cat_mood()
-        self._frame.after(500, self._update_labels)
+        self._frame.after(50, self._update_labels)
 
     def _initialize(self):
         """Alustaa näkymän.
         """
+        self._images_of_cat()
+
         self._frame = ttk.Frame(master=self._root)
         name_label = ttk.Label(
             master=self._frame,
@@ -132,11 +219,11 @@ class CatView:
         )
         self._comment_label = ttk.Label(
             master=self._frame,
-            text="esim nam oli hyvää"
+            text=""
         )
         self._mood_label = ttk.Label(
             master=self._frame,
-            text="esim minulla on nälkä"
+            text=""
         )
         food_button = ttk.Button(
             master=self._frame,

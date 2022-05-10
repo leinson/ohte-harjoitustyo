@@ -30,11 +30,6 @@ class Owner:
         new_cat = PetCat(cat_name)
         self.owners_cat = new_cat
 
-    def are_names_valid(self, owner_name, cat_name):
-        if owner_name == "" or cat_name == "":
-            return False
-        return True
-
     def feed_cat(self, cat):
         """Korottaa kissan ruokaprosenttia.
 
@@ -133,6 +128,7 @@ class PetCat:
         print(
             "Et pitänyt minusta tarpeeksi hyvää huolta. :( Karkaan naapuriin, hyvästi!")
 
+#ei tarvita?
     def __str__(self):
         """Palauttaa kissan nimen.
 
