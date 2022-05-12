@@ -1,7 +1,5 @@
 import unittest
-
-from entities_and_services.owner_and_cat import PetCat
-from entities_and_services.owner_and_cat import Owner
+from entities_and_services.petcat import PetCat
 
 
 class TestPetCat(unittest.TestCase):
@@ -46,39 +44,25 @@ class TestPetCat(unittest.TestCase):
     def test_stats_dont_decrease(self):
         self.cat.food_percent = 0
         self.cat.play_percent = 0
-        self.assertEqual(self.cat.stats_decrease(), None)
+        self.assertEqual(self.cat._stats_decrease(), None)
 
     def test_stats_dont_decrease_when_countdown_false(self):
-        self.cat.stats_decrease()
+        self.cat._stats_decrease()
         self.assertEqual(self.cat.food_percent, 20)
         self.assertEqual(self.cat.play_percent, 20)
 
     def test_stats_decrease_when_countdown_true(self):
         self.cat.countdown = True
-        self.cat._timer = 0
-        self.cat.stats_decrease()
+        self.cat.timer = 0
+        self.cat._stats_decrease()
         self.assertEqual(self.cat.food_percent, -5)
-
-    #palauta under tai over limit
-
     
-class TestOwner(unittest.TestCase):
-    def setUp(self):
-        self.owner = Owner()
-        self.cat = PetCat("TestCat")
+    def test_set_difficulty_sets_timer_correctly(self):
+        self.cat.set_difficulty(1)
+        self.assertEqual(self.cat.timer, 10)
+        self.cat.set_difficulty(2)
+        self.assertEqual(self.cat.timer, 5)
+        self.cat.set_difficulty(3)
+        self.assertEqual(self.cat.timer, 1)
 
-    def test_name_set_correctly(self):
-        self.owner.add_owner_name("Name")
-        self.assertEqual(self.owner.name, "Name")
-
-    def test_add_cat_to_owner_correctly(self):
-        self.owner.add_cat_and_name("Miuku")
-        self.assertEqual(self.owner.owners_cat.name, "Miuku")
-
-    def test_feed_cat_increases_cat_stats(self):
-        self.owner.feed_cat(self.cat)
-        self.assertEqual(self.cat.food_percent, 30)
-
-    def test_play_cat_increases_cat_stats(self):
-        self.owner.play_cat(self.cat)
-        self.assertEqual(self.cat.play_percent, 30)
+# palauta under tai over limit

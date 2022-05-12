@@ -1,5 +1,4 @@
-from logging import info
-from tkinter import Tk, ttk, constants
+from tkinter import ttk, constants
 
 
 class InfoView:
@@ -28,7 +27,7 @@ class InfoView:
         """Tuhoaa näkymän.
         """
         self._frame.destroy()
-    
+
     def _info_text(self):
         info_text = """
         Sovelluksen käyttöohje:
@@ -63,7 +62,8 @@ class InfoView:
         """Alustaa luokan ja näkymän.
         """
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text=f"{self._info_text()}", font=("Quicksand",12), background=self.bg_color)
+        label = ttk.Label(master=self._frame, text=f"{self._info_text()}", font=(
+            "Quicksand", 12), background=self.bg_color)
 
         button = ttk.Button(
             master=self._frame,
@@ -72,4 +72,5 @@ class InfoView:
         )
 
         label.grid(row=0, column=0, sticky=constants.W, padx=30, pady=5)
-        button.grid(row=1, column=0, sticky=constants.W, padx=30, pady=20, ipady=5)
+        button.grid(row=1, column=0, sticky=constants.W,
+                    padx=30, pady=20, ipady=5)
