@@ -1,4 +1,4 @@
-from tkinter import PhotoImage, Tk, ttk, constants
+from tkinter import ttk, constants, font
 from tkinter import *
 from PIL import Image, ImageTk
 from entities_and_services.owner_and_cat import Owner, owner
@@ -25,9 +25,10 @@ class CatView:
         self.play_stat_label = None
         self._cat_label = None
         self._comment_label = None
+        self.bg_color = '#E4D6FF'
         self._initialize()
         self._owner.owners_cat.stats_thread()
-
+        
     def pack(self):
         """Pakkaa näkymän.
         """
@@ -81,11 +82,8 @@ class CatView:
                 text="Tykkään ruuasta, mut nyt sain tarpeekseni!")
         else:
             self._comment_label.config(
-                text="Nam, olipa hyvää!")
+                text=f"Nam, olipa hyvää! {emoji.emojize(':face_savoring_food:')}")
 
-        # self.food_stat_label.config(
-        #     text=f"{self._owner.owners_cat.food_percent} / 100")
-        # # print(self._owner.owners_cat.food_percent)
 
     def _handle_play_button_click(self):
         """Napinpainallus kasvattaa kissan leikkiprosenttia.
@@ -101,11 +99,8 @@ class CatView:
                 text="Hei en jaksa enää, kohta saat tassua naamaan!")
         else:
             self._comment_label.config(
-                text="Jee leikkiminen on kivaa!")
+                text=f"Jee leikkiminen on kivaa! {emoji.emojize(':grinning_face_with_smiling_eyes:')}")
 
-        # self.play_stat_label.config(
-        #     text=f"{self._owner.owners_cat.play_percent} / 100")
-        # # print(self._owner.owners_cat.play_percent)
 
     def _handle_return_button_click(self):
         """Napinpainallus siirtää käyttäjän start-näkymään.
@@ -146,7 +141,7 @@ class CatView:
             else:
                 self._cat_label.configure(image=self._cat_happy_hungry)
                 self._cat_label.image = self._cat_happy_hungry
-                self._mood_label.config(text="Ihan hirvee nälkä!")
+                self._mood_label.config(text=f"Ihan hirvee nälkä! {emoji.emojize(':weary_face:')}")
 
         elif self._owner.owners_cat.play_percent >= 30:
             if self._owner.owners_cat.food_percent > 100:
@@ -160,20 +155,20 @@ class CatView:
             else:
                 self._cat_label.configure(image=self._cat_meh_hungry)
                 self._cat_label.image = self._cat_meh_hungry
-                self._mood_label.config(text="Ihan hirvee nälkä!")
+                self._mood_label.config(text=f"Ihan hirvee nälkä! {emoji.emojize(':disappointed_face:')}")
         else:
             if self._owner.owners_cat.food_percent > 100:
                 self._cat_label.configure(image=self._cat_sad_chunky)
                 self._cat_label.image = self._cat_sad_chunky
-                self._mood_label.config(text="Hei leikitäänkö, pliis suruemoji")
+                self._mood_label.config(text=f"Hei leikitäänkö, pliis {emoji.emojize(':disappointed_face:')}")
             elif self._owner.owners_cat.food_percent >= 50:
                 self._cat_label.configure(image=self._cat_sad)
                 self._cat_label.image = self._cat_sad
-                self._mood_label.config(text="Hei leikitäänkö, pliis suruemoji")
+                self._mood_label.config(text=f"Hei leikitäänkö, pliis {emoji.emojize(':crying_face:')}")
             else:
                 self._cat_label.configure(image=self._cat_sad_hungry)
                 self._cat_label.image = self._cat_sad_hungry
-                self._mood_label.config(text="Tilanne aika sos, ruokaa ja leikkimistä heti!")
+                self._mood_label.config(text=f"Tilanne aika sos, ruokaa ja leikkimistä heti! {emoji.emojize(':face_with_crossed-out_eyes:')}")
           
     def _update_labels(self):
         """Päivittää prosentit ja kissakuvan.
@@ -189,41 +184,58 @@ class CatView:
         """Alustaa näkymän.
         """
         self._images_of_cat()
+        _font = font.Font(family='Quicksand', size=12)
+        _font_large = font.Font(family='Quicksand', size=14)
 
         self._frame = ttk.Frame(master=self._root)
         name_label = ttk.Label(
             master=self._frame,
-            text=f"Nimesi on {self._owner.name}, kissasi nimi on {self._owner.owners_cat}."
+            text=f"Nimesi on {self._owner.name}, kissasi nimi on {self._owner.owners_cat}.",
+            font=_font_large,
+            background=self.bg_color
         )
 
         food_label = ttk.Label(
             master=self._frame,
-            text="Ruoka-tarve:"
+            text="Ruoka-tarve:",
+            font=_font,
+            background=self.bg_color
         )
         self.food_stat_label = ttk.Label(
             master=self._frame,
-            text=f"{self._owner.owners_cat.food_percent}/100"
+            text=f"{self._owner.owners_cat.food_percent}/100",
+            font=_font_large,
+            background=self.bg_color
         )
 
         play_label = ttk.Label(
             master=self._frame,
-            text="Leikki-tarve:"
+            text="Leikki-tarve:",
+            font=_font,
+            background=self.bg_color
         )
         self.play_stat_label = ttk.Label(
             master=self._frame,
-            text=f"{self._owner.owners_cat.play_percent}/100"
+            text=f"{self._owner.owners_cat.play_percent}/100",
+            font=_font_large,
+            background=self.bg_color
         )
         self._cat_label = ttk.Label(
             master=self._frame,
-            image=self._cat_meh
+            image=self._cat_meh,
+            background=self.bg_color
         )
         self._comment_label = ttk.Label(
             master=self._frame,
-            text=""
+            text="",
+            font=_font,
+            background=self.bg_color
         )
         self._mood_label = ttk.Label(
             master=self._frame,
-            text=""
+            text="",
+            font=_font,
+            background=self.bg_color
         )
         food_button = ttk.Button(
             master=self._frame,
@@ -232,7 +244,7 @@ class CatView:
         )
         play_button = ttk.Button(
             master=self._frame,
-            text=f"Leiki kanssani! {emoji.emojize(':star-struck:')}",
+            text=f"Leiki kanssani! {emoji.emojize(':grinning_face_with_smiling_eyes:')}",
             command=self._handle_play_button_click
         )
 
@@ -242,22 +254,17 @@ class CatView:
             command=self._handle_return_button_click
         )
 
-        name_label.grid(row=0, column=0, columnspan=4, sticky=constants.W)
+        name_label.grid(row=0, column=0, columnspan=4, sticky=constants.W, pady=40, padx=30)
         food_label.grid(row=1, column=3, sticky=constants.W)
-        self.food_stat_label.grid(row=1, column=4, sticky=constants.E, padx=25)
-        play_label.grid(row=2, column=3, sticky=constants.W)
-        self.play_stat_label.grid(row=2, column=4, sticky=constants.E, padx=25)
-        self._comment_label.grid(
-            row=3, column=3, sticky=constants.W, columnspan=2)
-        self._mood_label.grid(
-            row=4, column=3, sticky=constants.W, columnspan=2)
-        self._cat_label.grid(row=3, column=0, columnspan=3, rowspan=3)
-        food_button.grid(row=6, column=3, sticky=(
-            constants.W, constants.E), columnspan=2, padx=10, pady=5)
-        play_button.grid(row=7, column=3, sticky=(
-            constants.W, constants.E), columnspan=2, padx=10, pady=5)
-        return_button.grid(row=7, column=0, sticky=(
-            constants.W, constants.E), padx=10, pady=5)
+        self.food_stat_label.grid(row=1, column=4, sticky=(constants.W,constants.E), padx=25)
+        play_label.grid(row=2, column=3, sticky=constants.W, pady=10)
+        self.play_stat_label.grid(row=2, column=4, sticky=(constants.W,constants.E), padx=25, pady=10)
+        self._comment_label.grid(row=3, column=3, sticky=constants.W, columnspan=2)
+        self._mood_label.grid(row=4, column=3, sticky=constants.W, columnspan=2)
+        self._cat_label.grid(row=3, column=0, columnspan=3, rowspan=3, padx=30)
+        food_button.grid(row=6, column=3, sticky=(constants.W, constants.E), padx=10, pady=5, ipady=5)
+        play_button.grid(row=6, column=4, sticky=(constants.W, constants.E), padx=10, pady=10, ipady=5)
+        return_button.grid(row=6, column=0, sticky=(constants.W, constants.E), padx=30, pady=10, ipady=5)
         self._frame.grid_columnconfigure(3, weight=1, minsize=150)
         self._frame.grid_columnconfigure(4, weight=1, minsize=165)
         

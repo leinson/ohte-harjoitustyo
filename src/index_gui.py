@@ -9,7 +9,8 @@ def main():
     """
     window = Tk()
     window.title("MiukuM@uku")
-
+    window.geometry("800x800")
+    window.configure(background="#E4D6FF")
     u_interface = UI(window)
     u_interface.start()
 

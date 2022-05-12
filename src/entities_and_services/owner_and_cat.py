@@ -87,7 +87,7 @@ class PetCat:
             percent (int): Minkä verran prosentteja korotetaan
         """
         if action == "food":
-            if self.food_percent > 115:
+            if self.food_percent > 100:
                 return "over_limit"
             if self.food_percent < 0:
                 return "under_limit"
@@ -95,7 +95,7 @@ class PetCat:
                 return "under_limit"
             self.food_percent += percent
         if action == "play":
-            if self.play_percent > 115:
+            if self.play_percent > 100:
                 return "over_limit"
             if self.play_percent < 0:
                 return "under_limit"
@@ -113,8 +113,6 @@ class PetCat:
                 time.sleep(self._timer)
             else:
                 break
-        if self.countdown is True:
-            self.run_away()
 
     def stats_thread(self):
         """Aktvoi thread:in joka aloittaa ylläolevan metodin.
@@ -122,13 +120,6 @@ class PetCat:
         countdown_thread = threading.Thread(target=self.stats_decrease)
         countdown_thread.start()
 
-    def run_away(self):
-        """print tulostus, kun kissan prosentit menevät alle 0.
-        """
-        print(
-            "Et pitänyt minusta tarpeeksi hyvää huolta. :( Karkaan naapuriin, hyvästi!")
-
-#ei tarvita?
     def __str__(self):
         """Palauttaa kissan nimen.
 
