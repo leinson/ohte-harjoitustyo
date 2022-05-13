@@ -41,6 +41,22 @@ class TestPetCat(unittest.TestCase):
         self.cat.stats_percent("food", 50)
         self.assertEqual(self.cat.food_percent, 20)
 
+    def test_stats_percent_returns_under_limit(self):
+        self.cat.play_percent = -1
+        self.cat.food_percent = -1
+        return_value = self.cat.stats_percent("food", 0)
+        self.assertEqual(return_value, "under_limit")
+        return_value = self.cat.stats_percent("play", 0)
+        self.assertEqual(return_value, "under_limit")
+
+    def test_stats_percent_returns_over_limit(self):
+        self.cat.play_percent = 101
+        self.cat.food_percent = 101
+        return_value = self.cat.stats_percent("food", 0)
+        self.assertEqual(return_value, "over_limit")
+        return_value = self.cat.stats_percent("play", 0)
+        self.assertEqual(return_value, "over_limit")
+
     def test_stats_dont_decrease(self):
         self.cat.food_percent = 0
         self.cat.play_percent = 0
@@ -56,7 +72,7 @@ class TestPetCat(unittest.TestCase):
         self.cat.timer = 0
         self.cat._stats_decrease()
         self.assertEqual(self.cat.food_percent, -5)
-    
+
     def test_set_difficulty_sets_timer_correctly(self):
         self.cat.set_difficulty(1)
         self.assertEqual(self.cat.timer, 10)
@@ -64,5 +80,3 @@ class TestPetCat(unittest.TestCase):
         self.assertEqual(self.cat.timer, 5)
         self.cat.set_difficulty(3)
         self.assertEqual(self.cat.timer, 1)
-
-# palauta under tai over limit

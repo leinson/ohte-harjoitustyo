@@ -15,7 +15,7 @@ class InfoView:
         self._root = root
         self._handle_start = handle_start
         self._frame = None
-        self.bg_color = '#E4D6FF'
+        self._bg_color = '#E4D6FF'
         self._initialize()
 
     def pack(self):
@@ -62,15 +62,25 @@ class InfoView:
         """Alustaa luokan ja näkymän.
         """
         self._frame = ttk.Frame(master=self._root)
-        label = ttk.Label(master=self._frame, text=f"{self._info_text()}", font=(
-            "Quicksand", 12), background=self.bg_color)
 
+        label = ttk.Label(
+            master=self._frame,
+            text=f"{self._info_text()}",
+            font=("Quicksand", 12),
+            background=self._bg_color
+        )
         button = ttk.Button(
             master=self._frame,
             text="Takaisin",
             command=self._handle_start
         )
-
-        label.grid(row=0, column=0, sticky=constants.W, padx=30, pady=5)
-        button.grid(row=1, column=0, sticky=constants.W,
-                    padx=30, pady=20, ipady=5)
+        label.grid(
+            row=0, column=0,
+            sticky=constants.W,
+            padx=30, pady=5
+        )
+        button.grid(
+            row=1, column=0,
+            sticky=constants.W,
+            padx=30, pady=20, ipady=5
+        )

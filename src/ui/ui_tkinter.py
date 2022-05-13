@@ -10,7 +10,6 @@ class UI:
 
     def __init__(self, root):
         """Luokan konstruktori, joka alustaa tyhjän näkymän.
-
         Args:
             root: GUI juuri.
         """

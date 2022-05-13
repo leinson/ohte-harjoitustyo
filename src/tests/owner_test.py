@@ -18,8 +18,8 @@ class TestOwner(unittest.TestCase):
 
     def test_feed_cat_increases_cat_stats(self):
         self.owner.feed_cat(self.cat)
-        self.assertEqual(self.cat.food_percent, 30)
+        self.assertEqual(self.cat.food_percent, 25)
 
     def test_play_cat_increases_cat_stats(self):
         self.owner.play_cat(self.cat)
-        self.assertEqual(self.cat.play_percent, 30)
+        self.assertEqual(self.cat.play_percent, 25)

@@ -31,14 +31,14 @@ class Owner:
         Args:
             cat (object): omistajaan liitetty kissa-olio.
         """
-        return cat.stats_percent("food", 10)
+        return cat.stats_percent("food", 5)
 
     def play_cat(self, cat):
         """Korottaa kissan leikkiprosenttia.
         Args:
             cat (object): omistajaan littetty kissa-olio.
         """
-        return cat.stats_percent("play", 10)
+        return cat.stats_percent("play", 5)
 
 
 owner = Owner()
