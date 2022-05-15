@@ -34,9 +34,11 @@ class InfoView:
 
         - Syötä nimesi sekä kissasi nimen alkunäkymään.
 
+        - Valitse vaikeustaso.
+
         - Painamalla Aloita, siirryt päänäkymään, missä näet kissasi.
 
-        - Nimet tallentuvat vain sovelluksen kyseiselle käyttökerralle.
+        - Tiedot tallentuvat vain sovelluksen kyseiselle käyttökerralle.
 
 
         - Päänäkymässä näet kissasi tarpeet oikeasta yläkulmasta. 
