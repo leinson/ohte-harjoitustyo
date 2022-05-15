@@ -44,3 +44,15 @@
 - Laajennettu testikattavuutta
 - Siistitty koodia pylintin mukaan sekä itse tarkasteltu mm. Clean Code ja Single responsibility näkökulmista.
 - Tehty toka GitHub release.
+
+## Viikko 7
+- Kissakuvat vaihtuvat prosenttien mukaan. 
+- Kommenttikenttien arvot päivittyvät tilanteen mukaan.
+- Luotu puuttuvia kissakuvia ja karannut-lappu.
+- Refaktoroitu koodia sekä poistettu turhaa koodia.
+- Luotu vaikeustasot pelille: helppo, keskivaikea, vaikea.
+- Luotu graafisen käyttöliittymän viimeistelty yleisilme sekä tehty sovellukselle logo.
+- Ohjenäkymän sisältö tehty valmiiksi.
+- Tehty testausdokumentti.
+- Päivitetty dokumentaatiota vastaamaan loppupalautusta. 
+- Tehty loppupalautus GitHub release.
