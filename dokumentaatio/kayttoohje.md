@@ -2,7 +2,7 @@
 
 ### Ohjelman käynnistäminen
 
-- Viimeisimmän version sovelluksesta saat ladattua: [GitHub Release](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko7)
+- Viimeisimmän version sovelluksesta saat ladattua: [GitHub Release](https://github.com/leinson/ohte-harjoitustyo/releases/tag/loppupalautus)
 - Riippuvuudet asennetaan ennen sovelluksen käynnistämistä komennolla: `poetry install`
 - Sovelluksen käynnistäminen tehdään komennolla: `poetry run invoke start`
 - Ohjelma aukeaa aloitusnäkymään.
