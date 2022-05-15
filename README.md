@@ -16,7 +16,7 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 
 ### Asennus
 
-- [Loppupalautus](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko7)
+- [Loppupalautus](https://github.com/leinson/ohte-harjoitustyo/releases/tag/loppupalautus)
 
 - Riippuvuudet asennetaan komennolla: `poetry install`
 - Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
