@@ -62,9 +62,9 @@ Sovelluksessa ei ole tällä hetkellä toteutettu tietojen pysyväistallennusta.
 ### Päätoiminnallisuudet
 
 Ohjelman päätoiminnallisuudet ovat käyttäjän ja kissan luominen sekä kissan syöttäminen ja leikittäminen.
-Alle on kuvastettu yhtä sekvenssikaavioina. 
+Alle on kuvastettu muutamat sekvenssikaavioina. 
 
-Kun käyttäjän ja kissan nimet kirjoitetaan syötekenttiin ja painetaan aloita-painiketta, etenee sovellus seuraavasti:
+#### Käyttäjän ja kissan luominen:
 
 ```mermaid
 sequenceDiagram
@@ -85,7 +85,47 @@ sequenceDiagram
 ```
 Painikkeen painaminen tarkistaa ensin UI-luokan sisäisellä metodilla, onko nimet ja vaikeustaso valittu. Jos nimet ovat kunnossa aktivoituu metodi joka yhdistää nimitiedot owner olioon. Kissa-olio luodaan Owner-luokassa, ja kissa yhdistetään samalla käyttäjään. Asetetaan vaikeustaso, joka määräytyy sen mukaan mitä nappia käyttäjä on painanut. Countdown arvo laitetaan päälle jotta kissan tarve-prosentit voivat seuraavassa näkymässä toimia oikein. Käyttöjärjestelmä kutsuu omaa metodiaan joka siirtää käyttäjän seuraavaan Cat-näkymään.
 
-Muut sovelluksen toiminnallisuudet toteutuvat myös nappia painamalla, jolloin tapahtumakäsittelijä kutsuu siihen sopivaa metodia joka joko päivittää tai muuttaa arvoja, tai siirtyy näkymästä toiseen. Taustalla tapahtuvat toiminnallisuudet kuin kissan prosenttien vähenemien ja kuvien muuttuminen lähtevät käyntiin Cat-näkymään siirtyessä ja päivittyvät taustalla sovelluslogiikan metodien ehtojen mukaan.
+
+
+#### Kissan ruokkiminen
+
+```mermaid
+sequenceDiagram
+   actor Käyttäjä
+   participant UI
+   participant Owner
+   participant PetCat
+   Käyttäjä->>UI: Paina "Ruoki minua!" nappia
+   UI->>UI: _handle_food_button_click()
+   UI->>Owner: self._owner.feed_cat(self._owner.owners_cat)
+   Owner->>PetCat: cat.stats_percent("food", 5)
+   PetCat-->>Owner: "under_limit" tai "over_limit"
+   Owner-->> UI: "under_limit" tai "over_limit"
+  
+```  
+Painikkeen painaminen johtaa metodiin, joka kutsuu Owner luokan feed_cat metodia. Kyseisessä metodissa annetaan parametrit kissan prosenttien päivittämiselle, ja kutsutaan PetCat luokan metodia stats_percent. Siellä tarkistetaan, jos prosentit ovat jo yli 100 tai alle 0. Jos ovat, metodi palauttaa "under_limit" tai "over_limit". Muuten se korottaa PetCat olion food_percent muuttujaa. Palautusarvo välitetään käyttöliittymään, missä päivitetään tarpeen mukaan kommentti liiallisesta ruokamäärästä tai karannut-viesti. Jos paluuarvo ei ole kumpikaan, päivitetään kommentti hyvästä ruuasta.
+
+#### Kissan leikittäminen
+
+```mermaid
+sequenceDiagram
+   actor Käyttäjä
+   participant UI
+   participant Owner
+   participant PetCat
+   Käyttäjä->>UI: Paina "Leiki kanssani!" nappia
+   UI->>UI: _handle_play_button_click()
+   UI->>Owner: self._owner.play_cat(self._owner.owners_cat)
+   Owner->>PetCat: cat.stats_percent("play", 5)
+   PetCat-->>Owner: "under_limit" tai "over_limit"
+   Owner-->> UI: "under_limit" tai "over_limit"
+
+``` 
+Toimii samalla lailla kuin yllä oleva kissan ruokkiminen.
+
+
+#### Muut sovelluksen toiminnallisuudet 
+Ne toteutuvat myös nappia painamalla, jolloin tapahtumakäsittelijä kutsuu siihen sopivaa metodia joka joko päivittää tai muuttaa arvoja, tai siirtyy näkymästä toiseen. Taustalla tapahtuvat toiminnallisuudet kuin kissan prosenttien vähenemien ja kuvien muuttuminen lähtevät käyntiin Cat-näkymään siirtyessä ja päivittyvät taustalla sovelluslogiikan metodien ehtojen mukaan.
 
 ### Ohjelman rakenteeseen jääneet heikkoudet
 
