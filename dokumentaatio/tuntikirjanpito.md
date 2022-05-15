@@ -16,6 +16,11 @@
 | 28.4 | 1,5 | Docstring, pieniä korjauksia, koodin laadun siistimistä ja tarkastamista. |
 | 29.4 | 5 | Laadittu arkkitehtuurikuvaus, tehty käyttöohje, saatu kissa näkymään gui, yritetty saada kissakuvat vaihtumaan prosenttien mukaan-en saanut vielä toimimaan. Startnäkymään huomiokommentti jos nimet tyhjiä + ei päästä eteenpäin. Hieman muutettu kissanäkymä-layoutia, lisätty toinen kommenttikenttä missä kissa kommentoi olotilaansa. Asetettu rajat prosenteille:painikkeilla ei saa korotettua yli 125/100, ja kun prosentit tippuvat alle 0 painikkeet eivät enää korota arvoja. |
 | 3.5 | 3 | Korjattu bugi liittyen prosenttien päivitykseen. Siistitty käyttöliittymän asettelua. Edistetty testaamista 88%. Korjattu pylint virheitä, nyt 1pylint virhe, 9,78/10. Päivitetty changelog, tuntikirjanpito, readme, uusi release. |
-| 4.5 | 1,5 | vko 7: Kissakuvien vaihtuminen prosenttien päivittämisen mukaan saatu toimimaan! Tässä vaiheessa vain kahdella kuvalla testimielessä. |
+| 4.5 | 1,5 | Kissakuvien vaihtuminen prosenttien päivittämisen mukaan saatu toimimaan! Tässä vaiheessa vain kahdella kuvalla testimielessä. |
+| 10.5 | 4 | Kissakuvat päivittyy prosenttien mukaan. Luotu puuttuvat kissakuvat joka yhdistelmälle ruoka/leikkitarpeelle sekä karannut lappu. Poistettu turhaa koodia. Kissan kommenttikentät päivittyy nappien painalluksilla sekä prosenttien mukaan. |
+| 11.5 | 6 | Tehty graafista UI:seen liittyvää edistämistä, näkymien asettelua ja ulkonäöllisesti miellyttävämmäksi. Ohjeet näkymä tehty valmiiksi. Kommenttien vaihtuminen yhtenäistetty paremmin kuvien kanssa. Sovellukselle tehty logo. |
+| 12.5 | 4,5 | Testausdokumentti, UI-viilausta, turhien koodirivien ja tiedostojen poistoa. Refaktorointia. Tehty eri vaikeustasot pelille (miten nopeasti prosentit tippuvat). Lisää testejä. |
+| 13.5 | 1,5 | Koodin siistimistä ja sovelluksen hienosäätöä. |
+| 15.5 | 2,5 | Loppuviilaukset, kaikkien dokumenttien päivittäminen vastaamaan lopullista ohjelmaa.  Tarkastettu, että lähdekoodi on ohjeiden mukainen. Release tehty. |
 
-Tuntien yhteissumma: 46,5h
+Tuntien yhteissumma: 65h
