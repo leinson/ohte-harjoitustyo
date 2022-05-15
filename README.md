@@ -8,24 +8,21 @@ Sovellusta on testattu Pythonin `3.8` versiolla.
 
 ## Dokumentaatio
 - [Vaatimusmäärittely](./dokumentaatio/vaatimusmaarittely.md)
-
 - [Tuntikirjanpito](./dokumentaatio/tuntikirjanpito.md)
-
 - [Changelog](./dokumentaatio/changelog.md)
-
+- [Testausdokumentti](./dokumentaatio/testaus.md)
 - [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
 - [Käyttöohje](./dokumentaatio/kayttoohje.md)
 
 ### Asennus
 
-- [GitHub Release vko6](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko6)
-- [GitHub Release vko5](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko5)
+- [Loppupalautus](https://github.com/leinson/ohte-harjoitustyo/releases/tag/viikko7)
+
 - Riippuvuudet asennetaan komennolla: `poetry install`
 - Sovelluksen käynnistäminen komennolla: `poetry run invoke start`
 
 ### Komentorivitoiminnot
-- Ohjelma (gui) suoritetaan komennolla: `poetry run invoke start`
-- (Ohjelman teksti-ui komennolla: `poetry run invoke start-textui`)
+- Ohjelma suoritetaan komennolla: `poetry run invoke start`
 - Testit tehdään komennolla: `poetry run invoke test`
 - Testikattavuuden saa komennolla: `poetry run invoke coverage-report`
 - Pylint tarkistus komennolla: `poetry run invoke lint`
